@@ -10,6 +10,7 @@ class EmailTextField extends StatefulWidget {
   }) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _EmailTextFieldState createState() => _EmailTextFieldState();
 }
 
@@ -38,16 +39,16 @@ class _EmailTextFieldState extends State<EmailTextField> {
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(20),
           ),
-          prefixIcon: Icon(Icons.mail),
+          prefixIcon: const Icon(Icons.mail),
           suffixIcon: widget.controller.text.isEmpty
               ? Container(width: 0)
               : IconButton(
-                  icon: Icon(Icons.close),
+                  icon: const Icon(Icons.close),
                   onPressed: () => widget.controller.clear(),
                 ),
         ),
         keyboardType: TextInputType.emailAddress,
-        autofillHints: [AutofillHints.email],
+        autofillHints: const [AutofillHints.email],
         validator: (email) => email != null && !EmailValidator.validate(email)
             ? 'Enter a valid email'
             : null,
