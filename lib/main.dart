@@ -1,13 +1,11 @@
-import 'package:bike_path_app/core/components/errors/not_found_navigation.dart';
-import 'package:bike_path_app/core/constants/app/app_constant.dart';
-import 'package:bike_path_app/core/constants/navigation/navigation_constant.dart';
-import 'package:bike_path_app/core/init/navigation/navigation_service.dart';
-import 'package:bike_path_app/core/init/theme/light/app_theme_light.dart';
-import 'package:bike_path_app/view/authentication/sign_in/view/sign_in_view.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
+import 'core/constants/app/app_constant.dart';
+import 'core/constants/navigation/navigation_constant.dart';
 import 'core/init/navigation/navigation_route.dart';
+import 'core/init/navigation/navigation_service.dart';
+import 'core/init/theme/light/app_theme_light.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -30,7 +28,7 @@ class MyApp extends StatelessWidget {
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       onGenerateRoute: NavigationRoute.instance.onGenerateRoute,
-      initialRoute: NavigationConstants.signInPage,
+      initialRoute: NavigationConstants.onBoardPage,
       navigatorKey: NavigationService.instance.navigatorKey,
       //home: const SignInView(),
     );

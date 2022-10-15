@@ -22,10 +22,12 @@ class BaseView<T extends Store> extends StatefulWidget {
 }
 
 class _BaseViewState<T extends Store> extends State<BaseView<T>> {
+  late T model;
   @override
   void initState() {
     super.initState();
-    widget.onModelReady(widget.viewModel);
+    model = widget.viewModel;
+    widget.onModelReady(model);
   }
 
   @override
@@ -36,6 +38,6 @@ class _BaseViewState<T extends Store> extends State<BaseView<T>> {
 
   @override
   Widget build(BuildContext context) {
-    return widget.onPageBuilder(context, widget.viewModel);
+    return widget.onPageBuilder(context, model);
   }
 }

@@ -1,6 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:bike_path_app/core/base/view/base_view.dart';
-import 'package:bike_path_app/core/components/errors/not_found_navigation.dart';
 import 'package:bike_path_app/core/constants/app/app_constant.dart';
 import 'package:bike_path_app/core/constants/navigation/navigation_constant.dart';
 import 'package:bike_path_app/core/init/lang/locale_keys.g.dart';

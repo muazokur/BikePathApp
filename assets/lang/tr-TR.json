@@ -3,5 +3,16 @@
         "hello":"Bike Path uygulamasına hoş geldiniz",
         "next":"Sonraki Sayfa"
     },
-    "trying":"Yerelleştirmeyi deneyin"
+    "trying":"Yerelleştirmeyi deneyin",
+
+    "on_page":{
+        "login_question":"Daha İyi Yollarda Sürmek İster misin?",
+        "login_question_explanation":"Bisiklet yollarındaki bozukluk, yazı veya boya silinmesi gibi olumsuz durumları birlikte düzeltelim. ",
+
+        "take_photo":"Fotoğraf Çek",
+        "take_photo_explanation":"Bozukluk tespit ettiğin bisiklet yolunun fotoğrafını çekerek görevlilere iletmelisin.",
+
+        "share_location":"Konumu Paylaş",
+        "share_location_explanation":"Ardından tek yapman gereken bulunduğun yolun konumunu paylaşmak."
+    }
 }

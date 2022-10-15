@@ -3,6 +3,7 @@ import 'package:bike_path_app/view/authentication/sign_in/view/sign_in_view.dart
 import 'package:flutter/material.dart';
 
 import '../../../view/authentication/login/view/login_view.dart';
+import '../../../view/authentication/onboard/view/on_board_view.dart';
 import '../../components/errors/not_found_navigation.dart';
 
 class NavigationRoute {
@@ -16,6 +17,8 @@ class NavigationRoute {
         return normalNavigate(const SignInView());
       case NavigationConstants.loginPage:
         return normalNavigate(const LoginView());
+      case NavigationConstants.onBoardPage:
+        return normalNavigate(const OnBoardView());
       default:
         return normalNavigate(const NotFoundNavigation());
     }

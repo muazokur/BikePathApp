@@ -3,5 +3,16 @@
         "hello":"Welcome to Bike Path Application",
         "next":"Next Page"
     },
-    "trying":"Try Localization!"
+    "trying":"Try Localization!",
+
+    "on_page":{
+        "login_question":"Do you want to drive on better ways?",
+        "login_question_explanation":"Let's correct the negative situations such as disorder, writing or deletion of bicycle paths. ",
+
+        "take_photo":"Take a photo",
+        "take_photo_explanation":"You should take a picture of the bike path you detect and forward it to the officials.",
+
+        "share_location":"Share Location",
+        "share_location_explanation":"Then all you have to do is to share the location of your way."
+    }
 }

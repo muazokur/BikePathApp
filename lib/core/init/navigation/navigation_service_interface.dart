@@ -1,4 +1,4 @@
 abstract class INavigationService {
-  Future<void> navigedToPage({required String path, required Object data});
-  Future<void> navigedToPageClear({required String path, required Object data});
+  Future<void> navigedToPage({String? path, Object? data});
+  Future<void> navigedToPageClear({String? path, Object? data});
 }
