@@ -7,4 +7,6 @@ class ApplicationConstant {
   static const EN_LOCALE = Locale("en", "US");
   // ignore: constant_identifier_names
   static const LANG_PATH = "assets/lang";
+  // ignore: constant_identifier_names
+  static const SUPPORTED_LOCALE = [EN_LOCALE, TR_LOCALE];
 }
