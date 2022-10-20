@@ -53,7 +53,7 @@ abstract class _OnBoardViewModelBase with Store, BaseViewModel {
   Future<void> completeToOnBoard() async {
     changeLoading();
     if (navigation.navigatorKey.currentState != null) {
-      await navigation.navigedToPage(path: NavigationConstants.signInPage);
+      await navigation.navigedToPage(path: NavigationConstants.loginPage);
     } else {}
     changeLoading();
   }

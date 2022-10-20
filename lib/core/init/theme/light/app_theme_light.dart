@@ -14,7 +14,10 @@ class AppThemeLight extends AppTheme with ILightTheme {
 
   @override
   ThemeData get theme => ThemeData().copyWith(
+      primaryColor: colorSchemeLight.blueColor,
+      dividerColor: colorSchemeLight.lightBlueColor,
+      errorColor: colorSchemeLight.orangeColor,
       scaffoldBackgroundColor: colorSchemeLight.scaffoldbgColor,
-      floatingActionButtonTheme: FloatingActionButtonThemeData(
-          backgroundColor: colorSchemeLight.blueColor));
+      floatingActionButtonTheme:
+          FloatingActionButtonThemeData(backgroundColor: colorSchemeLight.blueColor));
 }

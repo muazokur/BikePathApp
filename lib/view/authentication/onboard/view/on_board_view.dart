@@ -15,11 +15,11 @@ class OnBoardView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BaseView<OnBoardViewModel>(
       viewModel: OnBoardViewModel(),
-      onModelReady: (OnBoardViewModel viewModel) {
+      onModelReady: (viewModel) {
         viewModel.setContext(context);
         viewModel.init();
       },
-      onPageBuilder: (context, OnBoardViewModel viewModel) {
+      onPageBuilder: (context, viewModel) {
         return Scaffold(
           body: Padding(
             padding: context.paddingNormalHorizontal,
@@ -82,7 +82,7 @@ class OnBoardView extends StatelessWidget {
         text: model.title,
         textAlign: TextAlign.center,
         style: Theme.of(context).textTheme.headline4!.copyWith(
-            fontWeight: FontWeight.bold, color: context.colors.onSurface));
+            fontWeight: FontWeight.w900, color: context.colors.onSurface));
   }
 
   LocaleText localTextDescription(OnBoardModel model, BuildContext context) {

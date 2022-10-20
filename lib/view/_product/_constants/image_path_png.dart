@@ -8,4 +8,6 @@ class PNGImagePaths {
   final onBoardPNG = "onboard_login".toPNG;
   final shareLocationPNG = "share_location".toPNG;
   final takePhotoPNG = "take_photo".toPNG;
+
+  final loginPerson = "login_person".toPNG;
 }

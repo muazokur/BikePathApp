@@ -9,4 +9,8 @@ class ApplicationConstant {
   static const LANG_PATH = "assets/lang";
   // ignore: constant_identifier_names
   static const SUPPORTED_LOCALE = [EN_LOCALE, TR_LOCALE];
+
+  // ignore: constant_identifier_names
+  static const EMAIL_REGIEX =
+      r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+";
 }

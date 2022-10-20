@@ -1,6 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-
 import 'core/constants/app/app_constant.dart';
 import 'core/constants/navigation/navigation_constant.dart';
 import 'core/init/navigation/navigation_route.dart';
@@ -18,8 +17,6 @@ void main() async {
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -30,7 +27,7 @@ class MyApp extends StatelessWidget {
       onGenerateRoute: NavigationRoute.instance.onGenerateRoute,
       initialRoute: NavigationConstants.onBoardPage,
       navigatorKey: NavigationService.instance.navigatorKey,
-      //home: const SignInView(),
+      //home: const OnBoardView(),
     );
   }
 }

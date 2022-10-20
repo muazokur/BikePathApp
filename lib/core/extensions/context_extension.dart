@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:bike_path_app/core/init/theme/light/text_theme_light.dart';
 import 'package:flutter/material.dart';
 
 extension ContextExtension on BuildContext {
@@ -20,6 +21,7 @@ extension ThemeExtension on BuildContext {
   ThemeData get theme => Theme.of(this);
   TextTheme get textTheme => theme.textTheme;
   ColorScheme get colors => theme.colorScheme;
+  TextThemeLight get textThemeLight => TextThemeLight.instance!;
 }
 
 extension PaddingExtensionAll on BuildContext {
@@ -31,21 +33,14 @@ extension PaddingExtensionAll on BuildContext {
 
 extension PaddingExtensionSymetric on BuildContext {
   EdgeInsets get paddingLowVertical => EdgeInsets.symmetric(vertical: lowValue);
-  EdgeInsets get paddingNormalVertical =>
-      EdgeInsets.symmetric(vertical: normalValue);
-  EdgeInsets get paddingMediumVertical =>
-      EdgeInsets.symmetric(vertical: mediumValue);
-  EdgeInsets get paddingHighVertical =>
-      EdgeInsets.symmetric(vertical: highValue);
+  EdgeInsets get paddingNormalVertical => EdgeInsets.symmetric(vertical: normalValue);
+  EdgeInsets get paddingMediumVertical => EdgeInsets.symmetric(vertical: mediumValue);
+  EdgeInsets get paddingHighVertical => EdgeInsets.symmetric(vertical: highValue);
 
-  EdgeInsets get paddingLowHorizontal =>
-      EdgeInsets.symmetric(horizontal: lowValue);
-  EdgeInsets get paddingNormalHorizontal =>
-      EdgeInsets.symmetric(horizontal: normalValue);
-  EdgeInsets get paddingMediumHorizontal =>
-      EdgeInsets.symmetric(horizontal: mediumValue);
-  EdgeInsets get paddingHighHorizontal =>
-      EdgeInsets.symmetric(horizontal: highValue);
+  EdgeInsets get paddingLowHorizontal => EdgeInsets.symmetric(horizontal: lowValue);
+  EdgeInsets get paddingNormalHorizontal => EdgeInsets.symmetric(horizontal: normalValue);
+  EdgeInsets get paddingMediumHorizontal => EdgeInsets.symmetric(horizontal: mediumValue);
+  EdgeInsets get paddingHighHorizontal => EdgeInsets.symmetric(horizontal: highValue);
 }
 
 extension PageExtension on BuildContext {

@@ -12,8 +12,8 @@ class BaseView<T extends Store> extends StatefulWidget {
   }) : super(key: key);
 
   final T viewModel;
-  final Function(T model) onModelReady;
-  final Widget Function(BuildContext context, T model) onPageBuilder;
+  final Function(T viewModel) onModelReady;
+  final Widget Function(BuildContext context, T viewModel) onPageBuilder;
   final VoidCallback? onDispose;
 
   @override

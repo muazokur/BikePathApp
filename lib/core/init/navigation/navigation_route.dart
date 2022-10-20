@@ -4,14 +4,13 @@ import 'package:flutter/material.dart';
 
 import '../../../view/authentication/login/view/login_view.dart';
 import '../../../view/authentication/onboard/view/on_board_view.dart';
-import '../../components/errors/not_found_navigation.dart';
 
 class NavigationRoute {
   static final NavigationRoute _instance = NavigationRoute._init();
   static NavigationRoute get instance => _instance;
   NavigationRoute._init();
 
-  Route<dynamic> onGenerateRoute(RouteSettings args) {
+  Route<dynamic>? onGenerateRoute(RouteSettings args) {
     switch (args.name) {
       case NavigationConstants.signInPage:
         return normalNavigate(const SignInView());
@@ -19,9 +18,11 @@ class NavigationRoute {
         return normalNavigate(const LoginView());
       case NavigationConstants.onBoardPage:
         return normalNavigate(const OnBoardView());
-      default:
-        return normalNavigate(const NotFoundNavigation());
+      // default:
+      //   print("burda");
+      //   return normalNavigate(const NotFoundNavigation());
     }
+    return null;
   }
 
   MaterialPageRoute normalNavigate(Widget widget) {
