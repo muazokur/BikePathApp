@@ -14,5 +14,20 @@
 
         "share_location":"Konumu Paylaş",
         "share_location_explanation":"Ardından tek yapman gereken bulunduğun yolun konumunu paylaşmak."
+    },
+
+    
+    "login_signin_page":{
+        "login":"Giriş yap",
+        "sign_in":"Kayıt ol",
+        "sign_up":"Kayıt ol",
+        "email":"E-posta",
+        "password":"Parola",
+        "email_validate":"E-posta geçerli değil",
+        "text_field_validate":"Bu alan gerekli",
+        "forgot_password":"Parolanızı mı unuttunuz",
+        "have_account":"Hesabınız yok mu?",
+        "name":"Ad",
+        "surname":"Soyad"
     }
 }

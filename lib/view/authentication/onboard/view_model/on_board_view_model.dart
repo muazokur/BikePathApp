@@ -15,18 +15,12 @@ class OnBoardViewModel = _OnBoardViewModelBase with _$OnBoardViewModel;
 abstract class _OnBoardViewModelBase with Store, BaseViewModel {
   @override
   void init() {
-    onBoardItems.add(OnBoardModel(
-        LocaleKeys.on_page_login_question,
-        LocaleKeys.on_page_login_question_explanation,
-        PNGImagePaths.instance.onBoardPNG));
-    onBoardItems.add(OnBoardModel(
-        LocaleKeys.on_page_take_photo,
-        LocaleKeys.on_page_take_photo_explanation,
-        PNGImagePaths.instance.takePhotoPNG));
-    onBoardItems.add(OnBoardModel(
-        LocaleKeys.on_page_share_location,
-        LocaleKeys.on_page_share_location_explanation,
-        PNGImagePaths.instance.shareLocationPNG));
+    onBoardItems.add(OnBoardModel(LocaleKeys.on_page_login_question,
+        LocaleKeys.on_page_login_question_explanation, PNGImagePaths.instance.onBoardPNG));
+    onBoardItems.add(OnBoardModel(LocaleKeys.on_page_take_photo,
+        LocaleKeys.on_page_take_photo_explanation, PNGImagePaths.instance.takePhotoPNG));
+    onBoardItems.add(OnBoardModel(LocaleKeys.on_page_share_location,
+        LocaleKeys.on_page_share_location_explanation, PNGImagePaths.instance.shareLocationPNG));
   }
 
   @override
@@ -53,7 +47,7 @@ abstract class _OnBoardViewModelBase with Store, BaseViewModel {
   Future<void> completeToOnBoard() async {
     changeLoading();
     if (navigation.navigatorKey.currentState != null) {
-      await navigation.navigedToPage(path: NavigationConstants.loginPage);
+      await navigation.navigedToPage(path: NavigationConstants.loginSignInManager);
     } else {}
     changeLoading();
   }

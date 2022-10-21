@@ -1,15 +1,14 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:bike_path_app/core/base/view/base_view.dart';
-import 'package:bike_path_app/core/constants/app/app_constant.dart';
-import 'package:bike_path_app/core/constants/navigation/navigation_constant.dart';
-import 'package:bike_path_app/core/init/lang/locale_keys.g.dart';
-import 'package:bike_path_app/core/init/navigation/navigation_service.dart';
-import 'package:bike_path_app/view/authentication/login/view/login_view.dart';
+import 'package:bike_path_app/core/extensions/context_extension.dart';
+import 'package:bike_path_app/core/extensions/string_extension.dart';
+import 'package:bike_path_app/view/_product/_widgets/button/general_elevated_button.dart';
 import 'package:bike_path_app/view/authentication/sign_in/view_model/sign_in_view_model.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-
-import '../../../../core/components/text/locale_text.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+import '../../../../core/components/text_field/icon_text_form_field.dart';
+import '../../../../core/init/lang/locale_keys.g.dart';
+import '../../../_product/_widgets/text_input/email_text_form_field.dart';
+import '../../../_product/_widgets/text_input/icon_container.dart';
 
 class SignInView extends StatefulWidget {
   const SignInView({super.key});
@@ -25,46 +24,79 @@ class _SignInViewState extends State<SignInView> {
   Widget build(BuildContext context) {
     return BaseView<SignInViewModel>(
       viewModel: SignInViewModel(),
-      onModelReady: (model) {},
-      onPageBuilder: (BuildContext context, model) {
+      onModelReady: (viewModel) {
+        viewModel.init();
+        viewModel.setContext(context);
+      },
+      onPageBuilder: (BuildContext context, viewModel) {
         return Scaffold(
-          appBar: AppBar(
-            title: const Text("data"),
-            leading: TextButton(
-                onPressed: () {
-                  NavigationService.instance.navigedToPage(
-                      path: NavigationConstants.loginPage,
-                      data: const LoginView());
-                },
-                child: const Text(
-                  "Selam",
-                  style: TextStyle(color: Colors.black),
-                )),
-            actions: [
-              ElevatedButton(
-                  onPressed: () {
-                    context.setLocale(ApplicationConstant.TR_LOCALE);
-                  },
-                  child: AutoSizeText(context.locale.languageCode))
-            ],
-          ),
-          body: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Container(
-                height: 60,
-                color: Theme.of(context).cardColor,
+          key: viewModel.scaffoldState,
+          body: Form(
+            key: viewModel.formState,
+            autovalidateMode: AutovalidateMode.always,
+            child: SingleChildScrollView(
+              child: Padding(
+                padding: context.paddingMedium,
+                child: Column(
+                  children: [
+                    EmailProductTextFormField(
+                      controller: viewModel.emailController,
+                    ),
+                    IconTextFormField(
+                        controller: viewModel.nameController,
+                        labelText: LocaleKeys.login_signin_page_name.locale,
+                        icon: Icons.person_remove_sharp),
+                    IconTextFormField(
+                        controller: viewModel.surnameController,
+                        labelText: LocaleKeys.login_signin_page_surname.locale,
+                        icon: Icons.person_remove_sharp),
+                    buildFormFieldPassword(context, viewModel),
+                    Padding(
+                      padding: context.paddingLowVertical,
+                      child: GeneralElevatedButton(
+                          onPressed: () {
+                            var textFieldsIsTrue = viewModel.fetchSingInService();
+                            //print(textFieldsIsTrue);
+                            if (textFieldsIsTrue) {
+                              print("basarili");
+                            } else {
+                              print("basarisiz");
+                            }
+                          },
+                          text: "Sign in"),
+                    )
+                  ],
+                ),
               ),
-              const LocaleText(text: LocaleKeys.sign_in_hello),
-              const LocaleText(text: LocaleKeys.trying),
-              Container(
-                height: 60,
-                color: Theme.of(context).scaffoldBackgroundColor,
-              ),
-            ],
+            ),
           ),
         );
       },
     );
   }
+}
+
+Widget buildFormFieldPassword(BuildContext context, SignInViewModel viewModel) {
+  return Observer(builder: (_) {
+    return TextFormField(
+      controller: viewModel.passwordController,
+      validator: (value) => value!.isNotEmpty
+          ? null
+          : LocaleKeys.login_signin_page_text_field_validate.locale.toString(),
+      obscureText: !viewModel.isLockOpen,
+      decoration: InputDecoration(
+        labelText: LocaleKeys.login_signin_page_password.locale,
+        icon: const IconContainer(icon: Icons.key),
+        suffix: InkWell(
+          onTap: () {
+            viewModel.isLockStateChange();
+          },
+          child: Observer(builder: (_) {
+            return Icon(viewModel.isLockOpen ? Icons.lock_open : Icons.lock,
+                color: context.theme.dividerColor);
+          }),
+        ),
+      ),
+    );
+  });
 }

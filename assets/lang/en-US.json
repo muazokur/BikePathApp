@@ -14,5 +14,23 @@
 
         "share_location":"Share Location",
         "share_location_explanation":"Then all you have to do is to share the location of your way."
+    },
+
+
+    "login_signin_page":{
+        "login":"Log in",
+        "sign_in":"Sign in",
+        "sign_up":"Sign up",
+        "email":"E-mail",
+        "password":"Password",
+        "email_validate":"E-mail doesn't found valid",
+        "text_field_validate":"This field required",
+        "forgot_password":"Forgot password",
+        "have_account":"Don't have a account",
+        "name":"Name",
+        "surname":"Surname"
     }
+  
+
+    
 }

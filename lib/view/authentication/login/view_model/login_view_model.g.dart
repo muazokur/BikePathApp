@@ -67,7 +67,7 @@ mixin _$LoginViewModel on _LoginViewModelBase, Store {
   }
 
   @override
-  void fetchLoginService() {
+  bool fetchLoginService() {
     final _$actionInfo = _$_LoginViewModelBaseActionController.startAction(
         name: '_LoginViewModelBase.fetchLoginService');
     try {

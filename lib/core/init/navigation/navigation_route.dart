@@ -1,4 +1,5 @@
 import 'package:bike_path_app/core/constants/navigation/navigation_constant.dart';
+import 'package:bike_path_app/view/authentication/login_singin_manager.dart';
 import 'package:bike_path_app/view/authentication/sign_in/view/sign_in_view.dart';
 import 'package:flutter/material.dart';
 
@@ -18,6 +19,8 @@ class NavigationRoute {
         return normalNavigate(const LoginView());
       case NavigationConstants.onBoardPage:
         return normalNavigate(const OnBoardView());
+      case NavigationConstants.loginSignInManager:
+        return normalNavigate(const LoginSignInManagerView());
       // default:
       //   print("burda");
       //   return normalNavigate(const NotFoundNavigation());

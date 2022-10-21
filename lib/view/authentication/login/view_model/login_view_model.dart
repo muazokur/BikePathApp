@@ -38,10 +38,12 @@ abstract class _LoginViewModelBase with Store, BaseViewModel {
   }
 
   @action
-  void fetchLoginService() {
+  bool fetchLoginService() {
     isLoadingChange();
     if (formState.currentState!.validate()) {
-      print("giris yapildi");
+      return true;
+    } else {
+      return false;
     }
   }
 }
