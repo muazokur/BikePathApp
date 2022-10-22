@@ -18,6 +18,8 @@ class TextThemeLight {
       const TextStyle(fontSize: 34, fontWeight: FontWeight.w400, letterSpacing: 0.25);
   final TextStyle headline5 =
       const TextStyle(fontSize: 20, fontWeight: FontWeight.w400, color: Colors.white);
+  final TextStyle headline6 = const TextStyle(
+      fontSize: 24, fontWeight: FontWeight.w700, color: Color.fromARGB(255, 58, 59, 59));
   final TextStyle overline =
       const TextStyle(fontSize: 10, fontWeight: FontWeight.w400, letterSpacing: 1.5);
 }

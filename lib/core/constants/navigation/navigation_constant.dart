@@ -4,4 +4,5 @@ class NavigationConstants {
   static const loginPage = "/login_page";
   static const onBoardPage = "/on_board_page";
   static const loginSignInManager = "/login_signin_manager";
+  static const noticePage = "/notice_page";
 }
