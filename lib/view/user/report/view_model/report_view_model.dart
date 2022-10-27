@@ -1,13 +1,16 @@
 import 'package:bike_path_app/core/base/model/base_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
-part 'notice_view_model.g.dart';
 
-class NoticeViewModel = _NoticeViewModelBase with _$NoticeViewModel;
+part 'report_view_model.g.dart';
 
-abstract class _NoticeViewModelBase with Store, BaseViewModel {
+// ignore: library_private_types_in_public_api
+class ReportViewModel = _ReportViewModelBase with _$ReportViewModel;
+
+abstract class _ReportViewModelBase with Store, BaseViewModel {
   @override
   void init() {}
+
   @override
   void setContext(BuildContext context) => baseContext = context;
 }

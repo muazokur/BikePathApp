@@ -44,7 +44,7 @@ abstract class _LoginViewModelBase with Store, BaseViewModel {
     isLoadingChange();
     if (formState.currentState!.validate()) {
       //servisten başarılı cevap gelirse
-      NavigationService.instance.navigedToPage(path: NavigationConstants.noticePage);
+      NavigationService.instance.navigedToPage(path: NavigationConstants.userMainPage);
       return true;
     } else {
       return false;

@@ -1,13 +1,13 @@
-import 'package:bike_path_app/core/base/view/base_view.dart';
-import 'package:bike_path_app/core/extensions/context_extension.dart';
-import 'package:bike_path_app/view/authentication/login/view/login_view.dart';
-import 'package:bike_path_app/view/authentication/login/view_model/login_view_model.dart';
-import 'package:bike_path_app/view/authentication/sign_in/view/sign_in_view.dart';
 import 'package:flutter/material.dart';
 
+import '../../core/base/view/base_view.dart';
+import '../../core/extensions/context_extension.dart';
 import '../../core/extensions/string_extension.dart';
 import '../../core/init/lang/locale_keys.g.dart';
 import '../_product/_constants/image_path_png.dart';
+import 'login/view/login_view.dart';
+import 'login/view_model/login_view_model.dart';
+import 'sign_in/view/sign_in_view.dart';
 
 class LoginSignInManagerView extends StatelessWidget {
   const LoginSignInManagerView({Key? key}) : super(key: key);
@@ -56,7 +56,7 @@ class LoginSignInManagerView extends StatelessWidget {
         color: Colors.white,
         height: context.mediaQuery.viewInsets.bottom > 0 ? 0 : context.height * 0.3,
         duration: context.lowDuration,
-        child: Center(child: Image.asset(PNGImagePaths.instance.loginPerson)));
+        child: Center(child: Image.asset(PNGImagePaths.instance.loginPersonPNG)));
   }
 
   Container buildContainerTabBar(BuildContext context) {

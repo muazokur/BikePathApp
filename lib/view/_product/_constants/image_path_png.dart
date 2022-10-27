@@ -9,5 +9,9 @@ class PNGImagePaths {
   final shareLocationPNG = "share_location".toPNG;
   final takePhotoPNG = "take_photo".toPNG;
 
-  final loginPerson = "login_person".toPNG;
+  final loginPersonPNG = "login_person".toPNG;
+
+  final noPersonPNG = "no_person".toPNG;
+
+  final mePNG = "me_profile".toPNG;
 }

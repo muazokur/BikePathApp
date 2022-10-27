@@ -1,32 +1,45 @@
 import 'package:bike_path_app/core/extensions/context_extension.dart';
 import 'package:flutter/material.dart';
 
-class ProductBottomAppBar extends StatelessWidget {
-  const ProductBottomAppBar({super.key});
+class ProductBottomAppBar extends StatefulWidget {
+  const ProductBottomAppBar({
+    Key? key,
+  }) : super(key: key);
+
+  //final VoidCallback onTap
 
   @override
+  State<ProductBottomAppBar> createState() => _ProductBottomAppBarState();
+}
+
+class _ProductBottomAppBarState extends State<ProductBottomAppBar> {
+  @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 2,
-      child: BottomAppBar(
-          shape: const CircularNotchedRectangle(),
-          notchMargin: 6,
-          color: context.theme.canvasColor,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              buildTabItem(
-                  index: 0,
-                  icon: Icons.notification_important_outlined,
-                  label: const Text("Bildiri")),
-              buildTabItem(
-                  index: 1, icon: Icons.account_circle_outlined, label: const Text("Profil")),
-            ],
-          )),
+    return BottomAppBar(
+      shape: const CircularNotchedRectangle(),
+      notchMargin: 6,
+      color: context.theme.dividerColor,
+      child: TabBar(
+          padding: context.paddingLowVertical,
+          labelStyle: context.textTheme.headline5,
+          indicatorColor: Colors.transparent,
+          tabs: [
+            tabBarItem(const Icon(Icons.notification_important_outlined), "Bildiri", context),
+            tabBarItem(const Icon(Icons.account_circle_outlined), "Profil", context),
+          ]),
     );
   }
 }
 
-Widget buildTabItem({required index, required icon, required label}) {
-  return TextButton.icon(onPressed: () {}, icon: Icon(icon), label: label);
+Widget tabBarItem(Icon icon, String text, BuildContext context) {
+  return Row(
+    mainAxisSize: MainAxisSize.min,
+    children: [
+      Padding(
+        padding: context.paddingLowHorizontal,
+        child: icon,
+      ),
+      Text(text),
+    ],
+  );
 }

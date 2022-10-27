@@ -24,5 +24,11 @@ abstract class  LocaleKeys {
   static const login_signin_page_name = 'login_signin_page.name';
   static const login_signin_page_surname = 'login_signin_page.surname';
   static const login_signin_page = 'login_signin_page';
+  static const login_sigin_manager_page_report = 'login_sigin_manager_page.report';
+  static const login_sigin_manager_page_profile = 'login_sigin_manager_page.profile';
+  static const login_sigin_manager_page = 'login_sigin_manager_page';
+  static const profile_page_sum_report = 'profile_page.sum_report';
+  static const profile_page_point = 'profile_page.point';
+  static const profile_page = 'profile_page';
 
 }

@@ -17,9 +17,9 @@ class ColorSchemeLight {
   Color get lightBlueColor => const Color.fromARGB(255, 99, 186, 218);
   Color get veryightBlueColor => const Color.fromARGB(255, 156, 215, 236);
 
-  Color get veryDarkBlueColor => const Color.fromRGBO(0, 8, 33, 1);
+  Color get veryDarkBlueColor => const Color.fromRGBO(39, 105, 171, 1);
   Color get orangeColor => const Color.fromRGBO(255, 101, 67, 1);
 
-  Color get primaryPurple => Color.fromARGB(255, 198, 99, 231);
-  Color get secondaryPurple => Color.fromARGB(255, 207, 129, 212);
+  Color get primaryPurple => const Color.fromARGB(255, 198, 99, 231);
+  Color get secondaryPurple => const Color.fromARGB(255, 207, 129, 212);
 }

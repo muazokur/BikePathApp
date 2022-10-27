@@ -29,8 +29,21 @@
         "have_account":"Don't have a account",
         "name":"Name",
         "surname":"Surname"
-    }
+    },
   
+    "login_sigin_manager_page":{
+        "report":"Notification",
+        "profile":"Profile"
+    },
+
+
+    "profile_page":{
+        "sum_report":"Sum Notification",
+        "point":"Point"
+    }
+
+    
+
 
     
 }

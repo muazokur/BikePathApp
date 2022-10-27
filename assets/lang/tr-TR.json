@@ -29,5 +29,15 @@
         "have_account":"Hesabınız yok mu?",
         "name":"Ad",
         "surname":"Soyad"
+    },
+
+    "login_sigin_manager_page":{
+        "report":"Bildiri",
+        "profile":"Profil"
+    },
+
+    "profile_page":{
+        "sum_report":"Toplam Bildiri",
+        "point":"Puan"
     }
 }

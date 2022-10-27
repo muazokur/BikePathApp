@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       onGenerateRoute: NavigationRoute.instance.onGenerateRoute,
-      initialRoute: NavigationConstants.noticePage,
+      initialRoute: NavigationConstants.userMainPage,
       navigatorKey: NavigationService.instance.navigatorKey,
       //home: const OnBoardView(),
     );

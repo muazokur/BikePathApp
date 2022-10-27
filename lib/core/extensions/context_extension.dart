@@ -15,6 +15,8 @@ extension MediaQueryExtension on BuildContext {
   double get normalValue => height * 0.02;
   double get mediumValue => height * 0.04;
   double get highValue => height * 0.1;
+  double get halfScreenVerticalValue => height * 0.50;
+  double get fourtyScreenVerticalValue => height * 0.40;
 }
 
 extension ThemeExtension on BuildContext {
