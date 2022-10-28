@@ -6,4 +6,5 @@ class NavigationConstants {
   static const loginSignInManager = "/login_signin_manager";
   static const reportPage = "/report_page";
   static const userMainPage = "/user_main_page";
+  static const createReportPage = "/create_report_page";
 }

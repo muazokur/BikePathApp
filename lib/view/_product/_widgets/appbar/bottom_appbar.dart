@@ -20,13 +20,14 @@ class _ProductBottomAppBarState extends State<ProductBottomAppBar> {
       notchMargin: 6,
       color: context.theme.dividerColor,
       child: TabBar(
-          padding: context.paddingLowVertical,
-          labelStyle: context.textTheme.headline5,
-          indicatorColor: Colors.transparent,
-          tabs: [
-            tabBarItem(const Icon(Icons.notification_important_outlined), "Bildiri", context),
-            tabBarItem(const Icon(Icons.account_circle_outlined), "Profil", context),
-          ]),
+        padding: context.paddingLowVertical,
+        labelStyle: context.textTheme.headline5,
+        indicatorColor: Colors.transparent,
+        tabs: [
+          tabBarItem(const Icon(Icons.notification_important_outlined), "Bildiri", context),
+          tabBarItem(const Icon(Icons.account_circle_outlined), "Profil", context),
+        ],
+      ),
     );
   }
 }

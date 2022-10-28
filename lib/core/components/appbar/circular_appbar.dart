@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 
 import '../../extensions/context_extension.dart';
 
+// ignore: must_be_immutable
 class CircularAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CircularAppBar({
     Key? key,
-    this.title,
+    this.title = const Text("Bike Path App"),
   }) : super(key: key);
   final Widget? title;
   @override

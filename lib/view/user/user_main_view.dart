@@ -1,7 +1,8 @@
+import 'package:bike_path_app/core/constants/navigation/navigation_constant.dart';
+import 'package:bike_path_app/core/init/navigation/navigation_service.dart';
 import 'package:bike_path_app/view/user/profile/view/profile_view.dart';
 import 'package:bike_path_app/view/user/report/view/report_view.dart';
 import 'package:flutter/material.dart';
-
 import '../../core/components/appbar/circular_appbar.dart';
 import '../_product/_widgets/appbar/bottom_appbar.dart';
 
@@ -13,18 +14,21 @@ class UserMainView extends StatelessWidget {
     return DefaultTabController(
       length: 2,
       child: Scaffold(
-        appBar: const CircularAppBar(
-          title: Text("Bike Path App"),
-        ),
-        body: const TabBarView(
+        appBar: CircularAppBar(),
+        body: TabBarView(
           children: [
             ReportView(),
             ProfileView(),
           ],
         ),
-        floatingActionButton: FloatingActionButton(onPressed: () {}, child: const Icon(Icons.add)),
+        floatingActionButton: FloatingActionButton(
+            onPressed: () {
+              NavigationService.instance.navigedToPage(path: NavigationConstants.createReportPage);
+            },
+            child: const Icon(Icons.add)),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         bottomNavigationBar: const ProductBottomAppBar(),
+        resizeToAvoidBottomInset: false,
       ),
     );
   }

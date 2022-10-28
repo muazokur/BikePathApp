@@ -1,6 +1,7 @@
 import 'package:bike_path_app/core/constants/navigation/navigation_constant.dart';
 import 'package:bike_path_app/view/authentication/login_singin_manager.dart';
 import 'package:bike_path_app/view/authentication/sign_in/view/sign_in_view.dart';
+import 'package:bike_path_app/view/user/create_report/view/create_report_view.dart';
 import 'package:bike_path_app/view/user/report/view/report_view.dart';
 import 'package:bike_path_app/view/user/user_main_view.dart';
 import 'package:flutter/material.dart';
@@ -27,6 +28,8 @@ class NavigationRoute {
         return normalNavigate(const ReportView());
       case NavigationConstants.userMainPage:
         return normalNavigate(const UserMainView());
+      case NavigationConstants.createReportPage:
+        return normalNavigate(const CreateReportView());
       // default:
       //   print("burda");
       //   return normalNavigate(const NotFoundNavigation());
