@@ -10,4 +10,5 @@ class NavigationConstants {
   static const splashPage = "/splash_page";
   static const acceptReportPage = "/accept_report_page";
   static const reportStatePage = "/report_state_page";
+  static const googleMapView = "/google_map_view";
 }

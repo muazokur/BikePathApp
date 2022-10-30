@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 
 import '../../../view/authentication/login/view/login_view.dart';
 import '../../../view/authentication/onboard/view/on_board_view.dart';
+import '../../../view/google_map/view/google_map_view.dart';
 import '../../../view/user/create_report/view/accept_report_view.dart';
 
 class NavigationRoute {
@@ -39,6 +40,8 @@ class NavigationRoute {
         return normalNavigate(AcceptReportView());
       case NavigationConstants.reportStatePage:
         return normalNavigate(ReportStateView());
+      case NavigationConstants.googleMapView:
+        return normalNavigate(GoogleMapView());
       // default:
       //   print("burda");
       //   return normalNavigate(const NotFoundNavigation());

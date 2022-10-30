@@ -1,4 +1,6 @@
 import 'package:bike_path_app/core/components/text/locale_text.dart';
+import 'package:bike_path_app/core/constants/navigation/navigation_constant.dart';
+import 'package:bike_path_app/core/init/navigation/navigation_service.dart';
 import 'package:bike_path_app/view/_product/_widgets/button/general_elevated_button.dart';
 import 'package:bike_path_app/view/_product/_widgets/lottie/lottie_widget.dart';
 import 'package:flutter/material.dart';
@@ -52,8 +54,11 @@ class CreateReportView extends StatelessWidget {
                           context,
                           viewModel,
                           JSONLottiePaths.instance.takeLocationLottieJSON,
-                          "Konum paylaşmak için tıklayınız",
-                          () {}),
+                          "Konum paylaşmak için tıklayınız", () {
+                        print("ds");
+                        NavigationService.instance
+                            .navigedToPage(path: NavigationConstants.googleMapView);
+                      }),
                       buildGestureDetectorLoittie(
                           context,
                           viewModel,
