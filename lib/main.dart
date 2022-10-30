@@ -22,10 +22,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: AppThemeLight.instance.theme,
+      debugShowCheckedModeBanner: false,
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       onGenerateRoute: NavigationRoute.instance.onGenerateRoute,
-      initialRoute: NavigationConstants.userMainPage,
+      initialRoute: NavigationConstants.createReportPage,
       navigatorKey: NavigationService.instance.navigatorKey,
       //home: const OnBoardView(),
     );

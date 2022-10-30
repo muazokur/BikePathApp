@@ -7,4 +7,6 @@ class NavigationConstants {
   static const reportPage = "/report_page";
   static const userMainPage = "/user_main_page";
   static const createReportPage = "/create_report_page";
+  static const splashPage = "/splash_page";
+  static const acceptReportPage = "/accept_report_page";
 }

@@ -11,3 +11,7 @@ extension StringLocalization on String {
 extension PNGPATH on String {
   String get toPNG => "assets/png/$this.png";
 }
+
+extension LOTTIEPATH on String {
+  String get toJSON => "assets/lottie/$this.json";
+}

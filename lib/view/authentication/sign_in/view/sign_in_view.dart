@@ -18,7 +18,7 @@ class SignInView extends StatefulWidget {
 }
 
 class _SignInViewState extends State<SignInView> {
-  final emailController = TextEditingController();
+  final emailController = TextEditingController(); //kaldır
 
   @override
   Widget build(BuildContext context) {

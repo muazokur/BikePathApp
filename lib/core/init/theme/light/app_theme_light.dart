@@ -26,8 +26,7 @@ class AppThemeLight extends AppTheme with ILightTheme {
           backgroundColor: colorSchemeLight.scaffoldbgColor,
           titleTextStyle: textThemeLight.headline6,
           systemOverlayStyle: SystemUiOverlayStyle(
-              statusBarColor: colorSchemeLight.scaffoldbgColor,
-              statusBarBrightness: Brightness.dark),
+              statusBarColor: Colors.transparent, statusBarBrightness: Brightness.dark),
         ),
       );
 }

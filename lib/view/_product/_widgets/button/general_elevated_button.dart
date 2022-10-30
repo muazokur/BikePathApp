@@ -8,10 +8,12 @@ class GeneralElevatedButton extends StatelessWidget {
     Key? key,
     required this.onPressed,
     required this.text,
+    this.isCancel = false,
   }) : super(key: key);
 
   final Function onPressed;
   final String text;
+  final isCancel;
 
   @override
   Widget build(BuildContext context) {
@@ -20,8 +22,8 @@ class GeneralElevatedButton extends StatelessWidget {
         onPressed();
       },
       style: ButtonStyle(
-          backgroundColor:
-              MaterialStateProperty.resolveWith((states) => context.theme.primaryColor),
+          backgroundColor: MaterialStateProperty.resolveWith((states) =>
+              isCancel == false ? context.theme.primaryColor : context.theme.errorColor),
           padding: MaterialStateProperty.resolveWith((states) => context.paddingNormal),
           shape: MaterialStateProperty.resolveWith(
               (states) => RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)))),
