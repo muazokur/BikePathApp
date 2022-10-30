@@ -3,6 +3,7 @@ import 'package:bike_path_app/view/authentication/login_singin_manager.dart';
 import 'package:bike_path_app/view/authentication/sign_in/view/sign_in_view.dart';
 import 'package:bike_path_app/view/authentication/splash/view/splash_view.dart';
 import 'package:bike_path_app/view/user/create_report/view/create_report_view.dart';
+import 'package:bike_path_app/view/user/report/view/report_state_view.dart';
 import 'package:bike_path_app/view/user/report/view/report_view.dart';
 import 'package:bike_path_app/view/user/user_main_view.dart';
 import 'package:flutter/material.dart';
@@ -36,6 +37,8 @@ class NavigationRoute {
         return normalNavigate(SplashView());
       case NavigationConstants.acceptReportPage:
         return normalNavigate(AcceptReportView());
+      case NavigationConstants.reportStatePage:
+        return normalNavigate(ReportStateView());
       // default:
       //   print("burda");
       //   return normalNavigate(const NotFoundNavigation());

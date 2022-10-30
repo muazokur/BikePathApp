@@ -29,7 +29,7 @@ class AcceptReportView extends StatelessWidget {
               Expanded(
                 flex: 4,
                 child: Container(
-                    color: Colors.amber,
+                    color: Colors.transparent,
                     width: context.width,
                     child: Container(
                       decoration: BoxDecoration(

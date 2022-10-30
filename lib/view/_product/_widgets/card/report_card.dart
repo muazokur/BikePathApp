@@ -8,14 +8,14 @@ class ReportCard extends StatelessWidget {
     this.subtitle,
     this.tralling,
     this.leadingCircleAvatar,
-    required this.onLongPress,
+    required this.onTap,
   }) : super(key: key);
 
   final String? title;
   final String? subtitle;
   final String? tralling;
   final String? leadingCircleAvatar;
-  final void Function() onLongPress;
+  final void Function() onTap;
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -41,8 +41,8 @@ class ReportCard extends StatelessWidget {
             const Text("Düzeltildi"),
           ],
         ),
-        onLongPress: () {
-          onLongPress();
+        onTap: () {
+          onTap();
         },
       ),
     );
