@@ -1,11 +1,11 @@
-import 'package:bike_path_app/core/base/view/base_view.dart';
-import 'package:bike_path_app/core/extensions/context_extension.dart';
-import 'package:bike_path_app/core/init/navigation/navigation_service.dart';
-import 'package:bike_path_app/view/_product/_constants/image_path_png.dart';
-import 'package:bike_path_app/view/_product/_widgets/alertdialog/user_alert_dialog.dart';
-import 'package:bike_path_app/view/_product/_widgets/card/report_card.dart';
 import 'package:flutter/material.dart';
+
+import '../../../../core/base/view/base_view.dart';
 import '../../../../core/constants/navigation/navigation_constant.dart';
+import '../../../../core/extensions/context_extension.dart';
+import '../../../../core/init/navigation/navigation_service.dart';
+import '../../../_product/_constants/image_path_png.dart';
+import '../../../_product/_widgets/card/report_card.dart';
 import '../view_model/report_view_model.dart';
 
 class ReportView extends StatefulWidget {

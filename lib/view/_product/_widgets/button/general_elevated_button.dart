@@ -1,7 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:flutter/material.dart';
-
 import 'package:bike_path_app/core/extensions/context_extension.dart';
+import 'package:flutter/material.dart';
 
 class GeneralElevatedButton extends StatelessWidget {
   const GeneralElevatedButton({
@@ -13,7 +12,7 @@ class GeneralElevatedButton extends StatelessWidget {
 
   final Function onPressed;
   final String text;
-  final isCancel;
+  final bool isCancel;
 
   @override
   Widget build(BuildContext context) {

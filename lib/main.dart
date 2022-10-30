@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+
 import 'core/constants/app/app_constant.dart';
 import 'core/constants/navigation/navigation_constant.dart';
 import 'core/init/navigation/navigation_route.dart';

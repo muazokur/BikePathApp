@@ -1,13 +1,11 @@
 import 'dart:io';
 
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:bike_path_app/core/base/view/base_view.dart';
-import 'package:bike_path_app/core/extensions/context_extension.dart';
-import 'package:bike_path_app/view/_product/_widgets/button/general_elevated_button.dart';
-import 'package:bike_path_app/view/user/create_report/view_model/create_report_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
+import '../../../../core/base/view/base_view.dart';
+import '../../../../core/extensions/context_extension.dart';
 import '../view_model/report_view_model.dart';
 
 class ReportStateView extends StatelessWidget {
