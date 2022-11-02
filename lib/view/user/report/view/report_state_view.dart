@@ -6,6 +6,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 
 import '../../../../core/base/view/base_view.dart';
 import '../../../../core/extensions/context_extension.dart';
+import '../../../google_map/view/google_map_view.dart';
 import '../view_model/report_view_model.dart';
 
 class ReportStateView extends StatelessWidget {
@@ -61,10 +62,17 @@ class ReportStateView extends StatelessWidget {
                               .subtitle2!
                               .copyWith(fontWeight: FontWeight.w300, height: 2),
                         ),
+                        AutoSizeText(
+                          "durum",
+                          style: Theme.of(context)
+                              .textTheme
+                              .subtitle2!
+                              .copyWith(fontWeight: FontWeight.w300, height: 2),
+                        ),
                         Container(
-                          height: context.height * 0.10,
+                          height: context.height * 0.30,
                           color: Colors.blueGrey,
-                          child: Text("HARİTA"),
+                          child: GoogleMapView(isGetLocationButton: false),
                         ),
                       ],
                     );

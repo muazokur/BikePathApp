@@ -4,6 +4,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:bike_path_app/core/base/view/base_view.dart';
 import 'package:bike_path_app/core/extensions/context_extension.dart';
 import 'package:bike_path_app/view/_product/_widgets/button/general_elevated_button.dart';
+import 'package:bike_path_app/view/google_map/view/google_map_view.dart';
 import 'package:bike_path_app/view/user/create_report/view_model/create_report_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -62,9 +63,9 @@ class AcceptReportView extends StatelessWidget {
                               .copyWith(fontWeight: FontWeight.w300, height: 2),
                         ),
                         Container(
-                          height: context.height * 0.10,
+                          height: context.height * 0.25,
                           color: Colors.blueGrey,
-                          child: Text("HARİTA"),
+                          child: GoogleMapView(isGetLocationButton: false),
                         ),
                         GeneralElevatedButton(onPressed: () {}, text: "Onayla"),
                         GeneralElevatedButton(
