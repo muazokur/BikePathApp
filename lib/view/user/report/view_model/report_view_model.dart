@@ -16,12 +16,12 @@ abstract class _ReportViewModelBase with Store, BaseViewModel {
   void setContext(BuildContext context) => baseContext = context;
 
   @observable
-  String? title = "başlık";
+  String? title = "Yazı Silinmesi";
   @observable
-  String? description = "açıklama";
+  String? description = "Bosna Hersek otobüs durağının karşısındaki yolda yazı silinmiş";
 
   ///Image process
   @observable
-  XFile? imageUrl =
-      XFile("/data/user/0/com.example.bike_path_app/cache/image_picker7257981601159748581.jpg");
+  XFile? imageUrl = XFile(
+      "/data/user/0/com.example.bike_path_app/cache/16655b5d-ce35-4f5c-b03a-80cd4a10ae755908002090746175.jpg");
 }

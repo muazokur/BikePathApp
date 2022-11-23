@@ -2,8 +2,11 @@ import 'package:bike_path_app/core/base/view/base_view.dart';
 import 'package:bike_path_app/view/user/profile/view_model/profile_view_model.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../core/constants/navigation/navigation_constant.dart';
 import '../../../../core/extensions/context_extension.dart';
+import '../../../../core/init/navigation/navigation_service.dart';
 import '../../../_product/_constants/image_path_png.dart';
+import '../../../_product/_widgets/card/report_card.dart';
 
 class ProfileView extends StatelessWidget {
   const ProfileView({Key? key}) : super(key: key);
@@ -25,6 +28,7 @@ class ProfileView extends StatelessWidget {
                 child: Container(
                   color: context.theme.scaffoldBackgroundColor,
                   child: Column(
+                    mainAxisSize: MainAxisSize.max,
                     children: [
                       SizedBox(
                         height: context.halfScreenVerticalValue,
@@ -36,7 +40,7 @@ class ProfileView extends StatelessWidget {
                               fit: StackFit.expand,
                               children: [
                                 buildProfileBody(viewModel, innerHeight, innerWidth, context),
-                                buildSettingButton(innerHeight, innerWidth),
+                                //buildSettingButton(innerHeight, innerWidth),
                                 buildCircleAvatar(innerWidth, innerWidth),
                               ],
                             );
@@ -132,10 +136,13 @@ class ProfileView extends StatelessWidget {
     return Positioned(
       top: innerHeight * 0.35,
       right: innerWidth * 0.05,
-      child: Icon(
-        Icons.settings,
-        color: Colors.grey[700],
-        size: 30,
+      child: InkWell(
+        onTap: () {},
+        child: Icon(
+          Icons.settings,
+          color: Colors.grey[700],
+          size: 30,
+        ),
       ),
     );
   }

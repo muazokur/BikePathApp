@@ -32,6 +32,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   easy_localization: ^3.0.1
   email_validator: ^2.1.17
+  flutter_titled_container: ^1.0.7
   flutter:
     sdk: flutter
   flutter_mobx: ^2.0.6+4
