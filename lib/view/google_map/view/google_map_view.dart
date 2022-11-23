@@ -48,8 +48,7 @@ class GoogleMapView extends StatelessWidget {
             visible: isGetLocationButton,
             child: FloatingActionButton.extended(
               onPressed: () async {
-                // var loc = await viewModel.determinePosition();
-                //print("${loc.latitude} ${loc.longitude}");
+                print("LAt: ${viewModel.lat}");
                 Navigator.pop(context);
               },
               label: Text("Konum Al"),

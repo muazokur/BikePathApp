@@ -1,13 +1,14 @@
 import 'dart:io';
 
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:bike_path_app/core/base/view/base_view.dart';
-import 'package:bike_path_app/core/extensions/context_extension.dart';
-import 'package:bike_path_app/view/_product/_widgets/button/general_elevated_button.dart';
-import 'package:bike_path_app/view/google_map/view/google_map_view.dart';
-import 'package:bike_path_app/view/user/create_report/view_model/create_report_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+
+import '../../../../core/base/view/base_view.dart';
+import '../../../../core/extensions/context_extension.dart';
+import '../../../_product/_widgets/button/general_elevated_button.dart';
+import '../../../google_map/view/google_map_view.dart';
+import '../view_model/create_report_view_model.dart';
 
 class AcceptReportView extends StatelessWidget {
   const AcceptReportView({Key? key}) : super(key: key);
@@ -29,54 +30,11 @@ class AcceptReportView extends StatelessWidget {
             children: [
               Expanded(
                 flex: 4,
-                child: Container(
-                    color: Colors.transparent,
-                    width: context.width,
-                    child: Container(
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          fit: BoxFit.fitWidth,
-                          image: FileImage(
-                            File(viewModel.imageUrl!.path),
-                          ),
-                        ),
-                      ),
-                    )),
+                child: reportPhotoContainer(context, viewModel),
               ),
               Expanded(
                 flex: 6,
-                child: Padding(
-                  padding: context.paddingMedium,
-                  child: Observer(builder: (_) {
-                    return Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Text(
-                          viewModel.title ?? "none",
-                          style: context.textThemeLight.headline4,
-                        ),
-                        AutoSizeText(
-                          viewModel.description ?? "none",
-                          style: Theme.of(context)
-                              .textTheme
-                              .subtitle2!
-                              .copyWith(fontWeight: FontWeight.w300, height: 2),
-                        ),
-                        Container(
-                          height: context.height * 0.25,
-                          color: Colors.blueGrey,
-                          child: GoogleMapView(isGetLocationButton: false),
-                        ),
-                        GeneralElevatedButton(onPressed: () {}, text: "Onayla"),
-                        GeneralElevatedButton(
-                          onPressed: () {},
-                          text: "İptal Et",
-                          isCancel: true,
-                        ),
-                      ],
-                    );
-                  }),
-                ),
+                child: contentPreviewColumn(context, viewModel),
               )
             ],
           ),
@@ -84,7 +42,74 @@ class AcceptReportView extends StatelessWidget {
       },
     );
   }
+
+  Container reportPhotoContainer(BuildContext context, CreateReportViewModel viewModel) {
+    return Container(
+        color: Colors.transparent,
+        width: context.width,
+        child: Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              fit: BoxFit.fitWidth,
+              image: FileImage(
+                File(viewModel.imageUrl!.path),
+              ),
+            ),
+          ),
+        ));
+  }
 }
+
+Widget contentPreviewColumn(BuildContext context, CreateReportViewModel viewModel) {
+  return Padding(
+    padding: context.paddingMedium,
+    child: Observer(builder: (_) {
+      return Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          titleText(viewModel, context),
+          descriptionText(viewModel, context),
+          googleMapContainer(context),
+          acceptButton(),
+          cancelButton(),
+        ],
+      );
+    }),
+  );
+}
+
+GeneralElevatedButton cancelButton() {
+  return GeneralElevatedButton(
+    onPressed: () {},
+    text: "İptal Et",
+    isCancel: true,
+  );
+}
+
+GeneralElevatedButton acceptButton() => GeneralElevatedButton(onPressed: () {}, text: "Onayla");
+
+Container googleMapContainer(BuildContext context) {
+  return Container(
+    height: context.height * 0.25,
+    color: Colors.blueGrey,
+    child: GoogleMapView(isGetLocationButton: false),
+  );
+}
+
+AutoSizeText descriptionText(CreateReportViewModel viewModel, BuildContext context) {
+  return AutoSizeText(
+    viewModel.description ?? "none",
+    style: Theme.of(context).textTheme.subtitle2!.copyWith(fontWeight: FontWeight.w300, height: 2),
+  );
+}
+
+Text titleText(CreateReportViewModel viewModel, BuildContext context) {
+  return Text(
+    viewModel.title ?? "none",
+    style: context.textThemeLight.headline4,
+  );
+}
+
 
 
 /*

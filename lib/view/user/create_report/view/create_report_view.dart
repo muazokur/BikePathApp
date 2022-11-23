@@ -40,43 +40,11 @@ class CreateReportView extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      IconTextFormField(
-                        controller: viewModel.titleController,
-                        labelText: "Başlık",
-                        icon: Icons.description_rounded,
-                      ),
-                      IconTextFormField(
-                        controller: viewModel.descriptionController,
-                        labelText: "Açıklama",
-                        icon: Icons.description_sharp,
-                      ),
-                      buildGestureDetectorLoittie(
-                          context,
-                          viewModel,
-                          JSONLottiePaths.instance.takeLocationLottieJSON,
-                          "Konum paylaşmak için tıklayınız", () {
-                        print("ds");
-                        NavigationService.instance
-                            .navigedToPage(path: NavigationConstants.googleMapView);
-                      }),
-                      buildGestureDetectorLoittie(
-                          context,
-                          viewModel,
-                          JSONLottiePaths.instance.uploadImageLottieJSON,
-                          "Fotoğraf yükle/değiştir", () {
-                        buildImageShowDialog(context, viewModel);
-                        //viewModel.getImageUrl();
-                      }),
-                      GeneralElevatedButton(
-                          onPressed: () {
-                            var textFieldIsTrue = viewModel.createReport();
-                            if (textFieldIsTrue) {
-                              print("basarili");
-                            } else {
-                              print("basarisiz");
-                            }
-                          },
-                          text: "Bildiri Oluştur"),
+                      titleTextFormField(viewModel),
+                      descriptionTextFormField(viewModel),
+                      shareLocationButton(context, viewModel),
+                      uploadPhotoButton(context, viewModel),
+                      createReportButton(viewModel),
                     ],
                   ),
                 ),
@@ -85,6 +53,51 @@ class CreateReportView extends StatelessWidget {
           ),
         );
       },
+    );
+  }
+
+  GeneralElevatedButton createReportButton(CreateReportViewModel viewModel) {
+    return GeneralElevatedButton(
+        onPressed: () {
+          var textFieldIsTrue = viewModel.createReport();
+          if (textFieldIsTrue) {
+            print("basarili");
+          } else {
+            print("basarisiz");
+          }
+        },
+        text: "Bildiri Oluştur");
+  }
+
+  Widget uploadPhotoButton(BuildContext context, CreateReportViewModel viewModel) {
+    return buildGestureDetectorLoittie(context, viewModel,
+        JSONLottiePaths.instance.uploadImageLottieJSON, "Fotoğraf yükle/değiştir", () {
+      buildImageShowDialog(context, viewModel);
+      //viewModel.getImageUrl();
+    });
+  }
+
+  Widget shareLocationButton(BuildContext context, CreateReportViewModel viewModel) {
+    return buildGestureDetectorLoittie(context, viewModel,
+        JSONLottiePaths.instance.takeLocationLottieJSON, "Konum paylaşmak için tıklayınız", () {
+      print("ds");
+      NavigationService.instance.navigedToPage(path: NavigationConstants.googleMapView);
+    });
+  }
+
+  IconTextFormField descriptionTextFormField(CreateReportViewModel viewModel) {
+    return IconTextFormField(
+      controller: viewModel.descriptionController,
+      labelText: "Açıklama",
+      icon: Icons.description_sharp,
+    );
+  }
+
+  IconTextFormField titleTextFormField(CreateReportViewModel viewModel) {
+    return IconTextFormField(
+      controller: viewModel.titleController,
+      labelText: "Başlık",
+      icon: Icons.description_rounded,
     );
   }
 

@@ -2,11 +2,8 @@ import 'package:bike_path_app/core/base/view/base_view.dart';
 import 'package:bike_path_app/view/user/profile/view_model/profile_view_model.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../core/constants/navigation/navigation_constant.dart';
 import '../../../../core/extensions/context_extension.dart';
-import '../../../../core/init/navigation/navigation_service.dart';
 import '../../../_product/_constants/image_path_png.dart';
-import '../../../_product/_widgets/card/report_card.dart';
 
 class ProfileView extends StatelessWidget {
   const ProfileView({Key? key}) : super(key: key);
