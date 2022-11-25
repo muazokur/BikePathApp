@@ -12,9 +12,9 @@ class GoogleMapViewModel = _GoogleMapViewModelBase with _$GoogleMapViewModel;
 abstract class _GoogleMapViewModelBase with Store, BaseViewModel {
   GeoCode geoCode = GeoCode();
   @observable
-  double lat = 38.0117975;
+  double lat = 0;
   @observable
-  double lng = 32.537649;
+  double lng = 0;
   @observable
   bool isLoadingLocation = false;
   @observable

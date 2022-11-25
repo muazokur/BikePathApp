@@ -1,3 +1,4 @@
+import 'package:bike_path_app/view/google_map/model/google_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -49,6 +50,9 @@ class GoogleMapView extends StatelessWidget {
             child: FloatingActionButton.extended(
               onPressed: () async {
                 print("LAt: ${viewModel.lat}");
+                print("LNg: ${viewModel.lng}");
+
+                GoogleModel.instance.addCurrentLocation(viewModel.lat, viewModel.lng);
                 Navigator.pop(context);
               },
               label: Text("Konum Al"),

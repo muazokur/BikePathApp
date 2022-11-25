@@ -43,6 +43,8 @@ abstract class _CreateReportViewModelBase with Store, BaseViewModel {
   @observable
   String? description;
 
+  List<double> location = [];
+
   ///Image process
   @observable
   XFile? imageUrl;
@@ -70,5 +72,13 @@ abstract class _CreateReportViewModelBase with Store, BaseViewModel {
     } else {
       return false;
     }
+  }
+
+  bool acceptReport() {
+    print(imageUrl!.path.toString());
+    print(title);
+    print(description);
+    print(location);
+    return true;
   }
 }
