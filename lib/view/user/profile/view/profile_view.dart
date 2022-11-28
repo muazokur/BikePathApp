@@ -1,9 +1,14 @@
+import 'dart:io';
+
 import 'package:bike_path_app/core/base/view/base_view.dart';
 import 'package:bike_path_app/view/user/profile/view_model/profile_view_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../../../../core/extensions/context_extension.dart';
 import '../../../_product/_constants/image_path_png.dart';
+import '../../../_product/_widgets/button/general_elevated_button.dart';
 
 class ProfileView extends StatelessWidget {
   const ProfileView({Key? key}) : super(key: key);
@@ -37,8 +42,8 @@ class ProfileView extends StatelessWidget {
                               fit: StackFit.expand,
                               children: [
                                 buildProfileBody(viewModel, innerHeight, innerWidth, context),
-                                //buildSettingButton(innerHeight, innerWidth),
-                                buildCircleAvatar(innerWidth, innerWidth),
+                                buildSettingButton(context, viewModel, innerHeight, innerWidth),
+                                buildCircleAvatar(viewModel, innerWidth, innerWidth),
                               ],
                             );
                           },
@@ -129,14 +134,17 @@ class ProfileView extends StatelessWidget {
     );
   }
 
-  Positioned buildSettingButton(double innerWidth, double innerHeight) {
+  Positioned buildSettingButton(
+      BuildContext context, ProfileViewModel viewModel, double innerWidth, double innerHeight) {
     return Positioned(
       top: innerHeight * 0.35,
       right: innerWidth * 0.05,
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          buildImageShowDialog(context, viewModel);
+        },
         child: Icon(
-          Icons.settings,
+          Icons.camera_alt_outlined,
           color: Colors.grey[700],
           size: 30,
         ),
@@ -144,22 +152,62 @@ class ProfileView extends StatelessWidget {
     );
   }
 
-  Positioned buildCircleAvatar(double innerWidth, double innerHeight) {
+  Positioned buildCircleAvatar(ProfileViewModel viewModel, double innerWidth, double innerHeight) {
     return Positioned(
       top: 0,
       left: 0,
       right: 0,
       child: Center(
-        child: CircleAvatar(
-          radius: innerHeight * 0.2,
-          backgroundColor: Colors.yellow,
-          child: Image.asset(
-            PNGImagePaths.instance.mePNG,
-            width: innerWidth * 0.45,
-            fit: BoxFit.fitWidth,
-          ),
-        ),
+        child: Observer(builder: (_) {
+          return CircleAvatar(
+            radius: innerHeight * 0.2,
+            backgroundColor: Colors.yellow,
+            child: viewModel.imageIsTrue == false
+                ? Image.asset(
+                    PNGImagePaths.instance.mePNG,
+                    width: innerWidth * 0.45,
+                    fit: BoxFit.fitWidth,
+                  )
+                : Container(
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        fit: BoxFit.fitWidth,
+                        image: FileImage(
+                          File(viewModel.imageUrl!.path),
+                        ),
+                      ),
+                    ),
+                  ),
+          );
+        }),
       ),
     );
   }
+}
+
+Future<dynamic> buildImageShowDialog(BuildContext context, ProfileViewModel viewModel) {
+  BuildContext? dialogContext;
+  return showDialog(
+    context: context,
+    builder: (context) {
+      dialogContext = context;
+      return AlertDialog(actions: [
+        Padding(
+          padding: context.paddingLowVertical,
+          child: GeneralElevatedButton(
+              onPressed: () {
+                viewModel.getImageUrl(ImageSource.camera);
+                Navigator.pop(dialogContext!);
+              },
+              text: "Kamerayı Aç"),
+        ),
+        GeneralElevatedButton(
+            onPressed: () {
+              viewModel.getImageUrl(ImageSource.gallery);
+              Navigator.pop(dialogContext!);
+            },
+            text: "Galeriden Yükle"),
+      ]);
+    },
+  );
 }

@@ -48,18 +48,19 @@ class AcceptReportView extends StatelessWidget {
 
   Container reportPhotoContainer(BuildContext context, CreateReportViewModel viewModel) {
     return Container(
-        color: Colors.transparent,
-        width: context.width,
-        child: Container(
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              fit: BoxFit.fitWidth,
-              image: FileImage(
-                File(viewModel.imageUrl!.path),
-              ),
+      color: Colors.transparent,
+      width: context.width,
+      child: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            fit: BoxFit.fitWidth,
+            image: FileImage(
+              File(viewModel.imageUrl!.path),
             ),
           ),
-        ));
+        ),
+      ),
+    );
   }
 }
 

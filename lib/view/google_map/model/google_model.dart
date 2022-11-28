@@ -3,6 +3,7 @@ class GoogleModel {
   static GoogleModel get instance => _instance;
   GoogleModel._init();
 
+  // ignore: prefer_final_fields
   List<double> _currentLocation = [];
 
   addCurrentLocation(double latitude, double longitude) {
