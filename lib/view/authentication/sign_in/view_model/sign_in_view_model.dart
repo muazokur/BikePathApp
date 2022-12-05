@@ -1,6 +1,8 @@
 import 'package:bike_path_app/core/base/model/base_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
+
+import '../../../../core/network/firebase_authentication.dart';
 part 'sign_in_view_model.g.dart';
 
 class SignInViewModel = SignInViewModelBase with _$SignInViewModel;
@@ -42,6 +44,9 @@ abstract class SignInViewModelBase with Store, BaseViewModel {
 
   @action
   bool fetchSingInService() {
+    //FirebaseEmailAuth.instance.signIn("mmo12@hotmail.com", "1234567");
+    FirebaseEmailAuth.instance.logIn("muazokur2@hotmail.com", "mstfa.159A");
+
     isLoadingChange();
     isLoadingChange();
     if (formState.currentState!.validate()) {

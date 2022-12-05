@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "944002101959",
+    "firebase_url": "https://bikepathapp-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "bikepathapp",
+    "storage_bucket": "bikepathapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:944002101959:android:1fdaa9959569db2798c4e2",
+        "android_client_info": {
+          "package_name": "com.example.bike_path_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "944002101959-uf7dncb0vmcfoo3ilhrlbaesc0fu82j6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.bike_path_app",
+            "certificate_hash": "346551311b2483824d290b54c7ed1940dc6b6a7a"
+          }
+        },
+        {
+          "client_id": "944002101959-vns67h2j1c1h3vta9b4kdcqgp68j60b2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZyCMOPHvDmWwhxPic7qhwBeFmx3Ltuq0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "944002101959-vns67h2j1c1h3vta9b4kdcqgp68j60b2.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "944002101959-lqi0m8e2j51emedjtehrnavu23p5vldb.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.bikePathApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
