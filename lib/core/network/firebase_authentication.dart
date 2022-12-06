@@ -30,11 +30,13 @@ class FirebaseEmailAuth extends BaseAuthentication {
 
   @override
   void logIn(String email, String password) async {
-    print("lan");
+    print("2");
     try {
-      await auth.signInWithEmailAndPassword(email: email, password: password);
       print("girdi");
+
+      await auth.createUserWithEmailAndPassword(email: email, password: password);
     } on FirebaseAuthException catch (error) {
+      print("sa");
       if (error.code == 'user-not-found') {
         print("girmedi");
       }

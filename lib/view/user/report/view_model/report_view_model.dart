@@ -23,5 +23,5 @@ abstract class _ReportViewModelBase with Store, BaseViewModel {
   ///Image process
   @observable
   XFile? imageUrl = XFile(
-      "/data/user/0/com.example.bike_path_app/cache/16655b5d-ce35-4f5c-b03a-80cd4a10ae755908002090746175.jpg");
+      "/data/user/0/com.example.bike_path_app_mmo1/cache/16655b5d-ce35-4f5c-b03a-80cd4a10ae755908002090746175.jpg");
 }

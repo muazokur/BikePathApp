@@ -45,7 +45,8 @@ abstract class SignInViewModelBase with Store, BaseViewModel {
   @action
   bool fetchSingInService() {
     //FirebaseEmailAuth.instance.signIn("mmo12@hotmail.com", "1234567");
-    FirebaseEmailAuth.instance.logIn("muazokur2@hotmail.com", "mstfa.159A");
+    print("1");
+    FirebaseEmailAuth.instance.logIn("cabbar-okur@hotmail.com", "123456");
 
     isLoadingChange();
     isLoadingChange();
