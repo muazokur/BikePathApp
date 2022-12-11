@@ -41,6 +41,15 @@ mixin _$SignInViewModel on SignInViewModelBase, Store {
     });
   }
 
+  late final _$fetchSingInServiceAsyncAction =
+      AsyncAction('SignInViewModelBase.fetchSingInService', context: context);
+
+  @override
+  Future<LoginState> fetchSingInService() {
+    return _$fetchSingInServiceAsyncAction
+        .run(() => super.fetchSingInService());
+  }
+
   late final _$SignInViewModelBaseActionController =
       ActionController(name: 'SignInViewModelBase', context: context);
 
@@ -61,17 +70,6 @@ mixin _$SignInViewModel on SignInViewModelBase, Store {
         name: 'SignInViewModelBase.isLoadingChange');
     try {
       return super.isLoadingChange();
-    } finally {
-      _$SignInViewModelBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  bool fetchSingInService() {
-    final _$actionInfo = _$SignInViewModelBaseActionController.startAction(
-        name: 'SignInViewModelBase.fetchSingInService');
-    try {
-      return super.fetchSingInService();
     } finally {
       _$SignInViewModelBaseActionController.endAction(_$actionInfo);
     }

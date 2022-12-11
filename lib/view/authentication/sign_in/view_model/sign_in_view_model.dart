@@ -1,4 +1,6 @@
 import 'package:bike_path_app/core/base/model/base_view_model.dart';
+import 'package:bike_path_app/view/authentication/sign_in/service/sign_in_service.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 
@@ -7,7 +9,7 @@ part 'sign_in_view_model.g.dart';
 
 class SignInViewModel = SignInViewModelBase with _$SignInViewModel;
 
-abstract class SignInViewModelBase with Store, BaseViewModel {
+abstract class SignInViewModelBase with Store, BaseViewModel, SignInService {
   late TextEditingController emailController;
   late TextEditingController passwordController;
   late TextEditingController nameController;
@@ -43,17 +45,24 @@ abstract class SignInViewModelBase with Store, BaseViewModel {
   }
 
   @action
-  bool fetchSingInService() {
-    //FirebaseEmailAuth.instance.signIn("mmo12@hotmail.com", "1234567");
-    print("1");
-    FirebaseEmailAuth.instance.logIn("cabbar-okur@hotmail.com", "123456");
-
+  Future<LoginState> fetchSingInService() async {
     isLoadingChange();
     isLoadingChange();
-    if (formState.currentState!.validate()) {
-      return true;
+    if (!formState.currentState!.validate()) {
+      return LoginState.FormStateError;
     } else {
-      return false;
+      var isRegistired = await signIn(emailController.text, passwordController.text);
+      if (isRegistired) {
+        return LoginState.Successful;
+      } else {
+        return LoginState.ServiceStateError;
+      }
     }
   }
+}
+
+enum LoginState {
+  FormStateError,
+  ServiceStateError,
+  Successful,
 }

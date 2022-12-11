@@ -54,13 +54,19 @@ class _SignInViewState extends State<SignInView> {
                     Padding(
                       padding: context.paddingLowVertical,
                       child: GeneralElevatedButton(
-                          onPressed: () {
-                            var textFieldsIsTrue = viewModel.fetchSingInService();
+                          onPressed: () async {
+                            var message = await viewModel.fetchSingInService();
                             //print(textFieldsIsTrue);
-                            if (textFieldsIsTrue) {
-                              print("basarili");
-                            } else {
-                              print("basarisiz");
+                            switch (message) {
+                              case LoginState.Successful:
+                                print("kayit basarili");
+                                break;
+                              case LoginState.FormStateError:
+                                print("Lüften alanları kontrol ediniz");
+                                break;
+                              case LoginState.ServiceStateError:
+                                print("e mail ve veya sifre gecersiz");
+                                break;
                             }
                           },
                           text: "Sign in"),

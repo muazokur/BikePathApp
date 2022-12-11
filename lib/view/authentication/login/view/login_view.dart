@@ -45,10 +45,10 @@ class LoginView extends StatelessWidget {
                       child: Center(
                         child: GeneralElevatedButton(
                           text: LocaleKeys.login_signin_page_login.locale,
-                          onPressed: () {
-                            var textFieldsIsTrue = viewModel.fetchLoginService();
+                          onPressed: () async {
+                            var state = await viewModel.fetchLoginService();
                             //print(textFieldsIsTrue);
-                            if (textFieldsIsTrue) {
+                            if (state) {
                               print("basarili");
                             } else {
                               print("basarisiz");

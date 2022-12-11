@@ -41,6 +41,14 @@ mixin _$LoginViewModel on _LoginViewModelBase, Store {
     });
   }
 
+  late final _$fetchLoginServiceAsyncAction =
+      AsyncAction('_LoginViewModelBase.fetchLoginService', context: context);
+
+  @override
+  Future<bool> fetchLoginService() {
+    return _$fetchLoginServiceAsyncAction.run(() => super.fetchLoginService());
+  }
+
   late final _$_LoginViewModelBaseActionController =
       ActionController(name: '_LoginViewModelBase', context: context);
 
@@ -61,17 +69,6 @@ mixin _$LoginViewModel on _LoginViewModelBase, Store {
         name: '_LoginViewModelBase.isLoadingChange');
     try {
       return super.isLoadingChange();
-    } finally {
-      _$_LoginViewModelBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  bool fetchLoginService() {
-    final _$actionInfo = _$_LoginViewModelBaseActionController.startAction(
-        name: '_LoginViewModelBase.fetchLoginService');
-    try {
-      return super.fetchLoginService();
     } finally {
       _$_LoginViewModelBaseActionController.endAction(_$actionInfo);
     }
