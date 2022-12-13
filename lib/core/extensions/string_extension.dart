@@ -15,3 +15,7 @@ extension PNGPATH on String {
 extension LOTTIEPATH on String {
   String get toJSON => "assets/lottie/$this.json";
 }
+
+extension JsonExtension on String {
+  String get json => "$this.json";
+}

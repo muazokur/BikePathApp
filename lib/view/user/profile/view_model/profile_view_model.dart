@@ -1,9 +1,11 @@
 import 'package:bike_path_app/core/base/model/base_view_model.dart';
+import 'package:bike_path_app/core/base/network/base_service.dart';
 import 'package:bike_path_app/core/extensions/string_extension.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:mobx/mobx.dart';
 
+import '../../../../core/constants/enums/service_enums.dart';
 import '../../../../core/init/lang/locale_keys.g.dart';
 part 'profile_view_model.g.dart';
 
@@ -24,6 +26,7 @@ abstract class _ProfileViewModelBase with Store, BaseViewModel {
   void init() {
     reportText = LocaleKeys.profile_page_sum_report.locale;
     pointText = LocaleKeys.profile_page_point.locale;
+    getProfile();
   }
 
   @override
@@ -37,5 +40,9 @@ abstract class _ProfileViewModelBase with Store, BaseViewModel {
       imageIsTrue = true;
     }
     print(imageIsTrue);
+  }
+
+  Future<void> getProfile() async {
+    BaseService.instance.get(Service.Users.get);
   }
 }

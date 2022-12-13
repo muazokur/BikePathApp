@@ -1,5 +1,4 @@
 import 'package:bike_path_app/core/base/network/base_authentication.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class FirebaseEmailAuth extends BaseAuthentication {
@@ -12,10 +11,11 @@ class FirebaseEmailAuth extends BaseAuthentication {
   @override
   Future<bool> signIn(String email, String password) async {
     try {
-      final credential = await au.createUserWithEmailAndPassword(
+      await auth.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
+
       return true;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {

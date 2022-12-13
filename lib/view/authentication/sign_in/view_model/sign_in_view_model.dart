@@ -1,10 +1,8 @@
 import 'package:bike_path_app/core/base/model/base_view_model.dart';
 import 'package:bike_path_app/view/authentication/sign_in/service/sign_in_service.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 
-import '../../../../core/network/firebase_authentication.dart';
 part 'sign_in_view_model.g.dart';
 
 class SignInViewModel = SignInViewModelBase with _$SignInViewModel;
