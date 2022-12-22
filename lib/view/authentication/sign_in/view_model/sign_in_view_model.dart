@@ -49,9 +49,18 @@ abstract class SignInViewModelBase with Store, BaseViewModel, SignInService {
     if (!formState.currentState!.validate()) {
       return LoginState.FormStateError;
     } else {
-      var isRegistired = await signIn(emailController.text, passwordController.text);
-      if (isRegistired) {
-        return LoginState.Successful;
+      var user = await signIn(emailController.text, passwordController.text);
+      if (user != null) {
+        var state = await dbRegister(
+          user.uid,
+          emailController.text,
+          nameController.text,
+          surnameController.text,
+        );
+        if (state) {
+          return LoginState.Successful;
+        }
+        return LoginState.ServiceStateError;
       } else {
         return LoginState.ServiceStateError;
       }

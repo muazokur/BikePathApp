@@ -6,27 +6,28 @@ class FirebaseEmailAuth extends BaseAuthentication {
   static FirebaseEmailAuth get instance => _instance;
   FirebaseEmailAuth._init();
 
-  var au = FirebaseAuth.instance;
-
   @override
-  Future<bool> signIn(String email, String password) async {
+  Future<User?> signIn(String email, String password) async {
     try {
-      await auth.createUserWithEmailAndPassword(
+      var credential = await auth.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
-
-      return true;
+      if (credential.user != null) {
+        print(credential.user!.uid);
+        return credential.user!;
+      }
+      return null;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         print('The password provided is too weak.');
       } else if (e.code == 'email-already-in-use') {
         print('The account already exists for that email.');
       }
-      return false;
+      return null;
     } catch (e) {
       print(e);
-      return false;
+      return null;
     }
   }
 

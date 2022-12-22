@@ -77,7 +77,7 @@ class ProfileView extends StatelessWidget {
               height: innerHeight * 0.20,
             ),
             Text(
-              'Mehmet Yıldırım',
+              'Mehmet Yildirim',
               style: context.textThemeLight.headline4,
             ),
             SizedBox(
