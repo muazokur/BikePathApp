@@ -1,6 +1,10 @@
+import 'dart:io';
+
 import 'package:bike_path_app/core/base/model/base_view_model.dart';
 import 'package:bike_path_app/core/constants/navigation/navigation_constant.dart';
 import 'package:bike_path_app/core/init/navigation/navigation_service.dart';
+import 'package:bike_path_app/core/network/date_service.dart';
+import 'package:bike_path_app/core/network/firebase_storage.dart';
 import 'package:bike_path_app/view/user/create_report/service/report_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:image_picker/image_picker.dart';
@@ -34,6 +38,8 @@ abstract class _CreateReportViewModelBase with Store, BaseViewModel, ReportServi
 
   @override
   void setContext(BuildContext context) => baseContext = context;
+
+  String reportPhotos = "reportPhotos";
 
   @observable
   bool locationIsTrue = false;
@@ -76,13 +82,16 @@ abstract class _CreateReportViewModelBase with Store, BaseViewModel, ReportServi
     }
   }
 
-  bool acceptReport() {
-    print(imageUrl!.path.toString());
-    print(title);
-    print(description);
-    print(location);
-
-    //addReport();
-    return true;
+  Future<bool> acceptReport() async {
+    try {
+      var date = DateService.instance.getDate();
+      var img = imageUrl!.path.toString();
+      var photoUrl = await FireStorage.instance.uploadMedia(File(img), reportPhotos);
+      var result =
+          await addReport(photoUrl, title!, description!, location, date, "Selcuklu/Konya");
+      return result;
+    } catch (e) {
+      return false;
+    }
   }
 }

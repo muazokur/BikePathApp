@@ -1,11 +1,13 @@
 import 'dart:io';
 
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:bike_path_app/core/init/navigation/navigation_service.dart';
 import 'package:bike_path_app/view/google_map/model/google_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
 import '../../../../core/base/view/base_view.dart';
+import '../../../../core/constants/navigation/navigation_constant.dart';
 import '../../../../core/extensions/context_extension.dart';
 import '../../../_product/_widgets/button/general_elevated_button.dart';
 import '../../../google_map/view/google_map_view.dart';
@@ -91,8 +93,11 @@ GeneralElevatedButton cancelButton() {
 }
 
 GeneralElevatedButton acceptButton(CreateReportViewModel viewModel) => GeneralElevatedButton(
-    onPressed: () {
-      viewModel.acceptReport();
+    onPressed: () async {
+      var result = await viewModel.acceptReport();
+      if (result) {
+        NavigationService.instance.navigedToPageClear(path: NavigationConstants.userMainPage);
+      }
     },
     text: "Onayla");
 

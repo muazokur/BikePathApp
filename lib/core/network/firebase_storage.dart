@@ -6,12 +6,12 @@ class FireStorage {
   FireStorage._init();
   static FireStorage get instance => _instance;
 
-  Future<String> uploadMedia(File file, String email) async {
+  Future<String> uploadMedia(File file, String folder) async {
     try {
       FirebaseStorage firebaseStorage = FirebaseStorage.instance;
       var uploadTask = firebaseStorage
           .ref()
-          .child("$email/${DateTime.now().millisecondsSinceEpoch}.${file.path.split('.').last}")
+          .child("$folder/${DateTime.now().millisecondsSinceEpoch}.${file.path.split('.').last}")
           .putFile(file);
 
       uploadTask.snapshotEvents.listen((event) {});

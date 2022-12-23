@@ -7,20 +7,25 @@ class ReportModel extends BaseModel {
   String? date;
   String? description;
   int? likeCount;
-  List<int>? location;
+  List<double>? location;
   String? photo;
   String? title;
+  String? id;
+  bool? state;
 
-  ReportModel(
-      {required this.address,
-      this.commentCount = 0,
-      this.comments,
-      required this.date,
-      required this.description,
-      this.likeCount = 0,
-      required this.location,
-      required this.photo,
-      required this.title});
+  ReportModel({
+    required this.address,
+    this.commentCount = 0,
+    this.comments,
+    required this.date,
+    required this.description,
+    this.likeCount = 0,
+    required this.location,
+    required this.photo,
+    required this.title,
+    required this.id,
+    this.state = false,
+  });
 
   ReportModel.empty();
 
@@ -31,9 +36,11 @@ class ReportModel extends BaseModel {
     date = json['date'];
     description = json['description'];
     likeCount = json['likeCount'];
-    location = json['location'].cast<int>();
+    location = json['location'].cast<double>();
     photo = json['photo'];
     title = json['title'];
+    id = json['id'];
+    state = json['state'];
   }
 
   @override
@@ -50,6 +57,8 @@ class ReportModel extends BaseModel {
     data['location'] = location;
     data['photo'] = photo;
     data['title'] = title;
+    data['id'] = id;
+    data['state'] = state;
     return data;
   }
 

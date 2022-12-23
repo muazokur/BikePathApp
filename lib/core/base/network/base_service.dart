@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:bike_path_app/core/base/model/base_model.dart';
+import 'package:bike_path_app/view/user/create_report/model/report_model.dart';
 import 'package:bike_path_app/view/user/model/user_model.dart';
 import 'package:dio/dio.dart';
 
@@ -55,6 +56,31 @@ class BaseService {
         url,
         data: data,
       );
+      return true;
+    } catch (e) {
+      print(e);
+      return false;
+    }
+  }
+
+  Future<bool> postReport(String id, String url, String photo, String title, String description,
+      List<double> location, String date, String address, bool state) async {
+    try {
+      var jsonModel = ReportModel(
+          id: id,
+          state: state,
+          address: address,
+          date: date,
+          description: description,
+          location: location,
+          photo: photo,
+          title: title);
+      await Dio().post(
+        url,
+        data: jsonModel,
+      );
+      print(jsonModel);
+
       return true;
     } catch (e) {
       print(e);
