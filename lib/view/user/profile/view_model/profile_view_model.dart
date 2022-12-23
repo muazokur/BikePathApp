@@ -1,5 +1,9 @@
+import 'dart:io';
+
 import 'package:bike_path_app/core/base/model/base_view_model.dart';
 import 'package:bike_path_app/core/extensions/string_extension.dart';
+import 'package:bike_path_app/core/network/firebase_storage.dart';
+import 'package:bike_path_app/view/user/model/user_model.dart';
 import 'package:bike_path_app/view/user/profile/service/profile_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:image_picker/image_picker.dart';
@@ -21,11 +25,18 @@ abstract class _ProfileViewModelBase with Store, BaseViewModel, ProfileService {
   @observable
   bool imageIsTrue = false;
 
+  @observable
+  bool isLoading = false;
+  @action
+  void isLoadingChange() {
+    isLoading = !isLoading;
+  }
+
   @override
-  void init() {
+  void init() async {
     reportText = LocaleKeys.profile_page_sum_report.locale;
     pointText = LocaleKeys.profile_page_point.locale;
-    getUser();
+    await getUser();
   }
 
   @override
@@ -34,14 +45,32 @@ abstract class _ProfileViewModelBase with Store, BaseViewModel, ProfileService {
   @action
   Future<void> getImageUrl(ImageSource source) async {
     imageUrl = await imagePicker.pickImage(source: source);
+
     if (imageUrl != null) {
       print(imageUrl!.path);
       imageIsTrue = true;
     }
     print(imageIsTrue);
+
+    await changeProfileImage();
   }
 
+  @observable
+  UserModel? userModel;
+
+  @action
   Future<void> getUser() async {
-    await getProfile();
+    userModel = await getProfile();
+    isLoadingChange();
+    print(userModel!.surname);
+  }
+
+  @action
+  Future changeProfileImage() async {
+    if (imageIsTrue) {
+      var photoUrl = await FireStorage.instance.uploadMedia(File(imageUrl!.path), userModel!.email);
+      userModel!.photoUrl = photoUrl;
+      uploadProfilePhoto(photoUrl);
+    }
   }
 }

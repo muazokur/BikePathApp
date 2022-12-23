@@ -32,23 +32,29 @@ class ProfileView extends StatelessWidget {
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      SizedBox(
-                        height: context.halfScreenVerticalValue,
-                        child: LayoutBuilder(
-                          builder: (context, constraints) {
-                            double innerHeight = constraints.maxHeight;
-                            double innerWidth = constraints.maxWidth;
-                            return Stack(
-                              fit: StackFit.expand,
-                              children: [
-                                buildProfileBody(viewModel, innerHeight, innerWidth, context),
-                                buildSettingButton(context, viewModel, innerHeight, innerWidth),
-                                buildCircleAvatar(viewModel, innerWidth, innerWidth),
-                              ],
-                            );
-                          },
-                        ),
-                      ),
+                      Observer(builder: (_) {
+                        return viewModel.isLoading == false
+                            ? CircularProgressIndicator()
+                            : SizedBox(
+                                height: context.halfScreenVerticalValue,
+                                child: LayoutBuilder(
+                                  builder: (context, constraints) {
+                                    double innerHeight = constraints.maxHeight;
+                                    double innerWidth = constraints.maxWidth;
+                                    return Stack(
+                                      fit: StackFit.expand,
+                                      children: [
+                                        buildProfileBody(
+                                            viewModel, innerHeight, innerWidth, context),
+                                        buildSettingButton(
+                                            context, viewModel, innerHeight, innerWidth),
+                                        buildCircleAvatar(viewModel, innerWidth, innerWidth),
+                                      ],
+                                    );
+                                  },
+                                ),
+                              );
+                      }),
                     ],
                   ),
                 ),
@@ -77,7 +83,7 @@ class ProfileView extends StatelessWidget {
               height: innerHeight * 0.20,
             ),
             Text(
-              'Mehmet Yildirim',
+              "${viewModel.userModel!.name} ${viewModel.userModel!.surname}",
               style: context.textThemeLight.headline4,
             ),
             SizedBox(
@@ -96,7 +102,8 @@ class ProfileView extends StatelessWidget {
                         fontSize: 25,
                       ),
                     ),
-                    Text('10', style: context.textThemeLight.headline6),
+                    Text(viewModel.userModel!.sumNotification.toString(),
+                        style: context.textThemeLight.headline6),
                   ],
                 ),
                 Padding(
@@ -123,7 +130,8 @@ class ProfileView extends StatelessWidget {
                         fontSize: 25,
                       ),
                     ),
-                    Text('1', style: context.textThemeLight.headline6),
+                    Text(viewModel.userModel!.point.toString(),
+                        style: context.textThemeLight.headline6),
                   ],
                 ),
               ],
@@ -160,28 +168,37 @@ class ProfileView extends StatelessWidget {
       child: Center(
         child: Observer(builder: (_) {
           return CircleAvatar(
-            radius: innerHeight * 0.2,
-            backgroundColor: Colors.yellow,
-            child: viewModel.imageIsTrue == false
-                ? Image.asset(
-                    PNGImagePaths.instance.mePNG,
-                    width: innerWidth * 0.45,
-                    fit: BoxFit.fitWidth,
-                  )
-                : Container(
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        fit: BoxFit.fitWidth,
-                        image: FileImage(
-                          File(viewModel.imageUrl!.path),
-                        ),
-                      ),
-                    ),
-                  ),
-          );
+              radius: innerHeight * 0.2,
+              backgroundColor: Colors.transparent,
+              child: profileImage(viewModel, innerWidth));
         }),
       ),
     );
+  }
+}
+
+Widget profileImage(ProfileViewModel viewModel, double innerWidth) {
+  if (viewModel.userModel!.photoUrl != "") {
+    return Image.network(viewModel.userModel!.photoUrl);
+  } else {
+    if (viewModel.imageIsTrue == false) {
+      return Image.asset(
+        PNGImagePaths.instance.mePNG,
+        width: innerWidth * 0.45,
+        fit: BoxFit.fitWidth,
+      );
+    } else {
+      return Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            fit: BoxFit.fitWidth,
+            image: FileImage(
+              File(viewModel.imageUrl!.path),
+            ),
+          ),
+        ),
+      );
+    }
   }
 }
 
@@ -199,7 +216,7 @@ Future<dynamic> buildImageShowDialog(BuildContext context, ProfileViewModel view
                 viewModel.getImageUrl(ImageSource.camera);
                 Navigator.pop(dialogContext!);
               },
-              text: "Kamerayı Aç"),
+              text: "Kamerayi Aç"),
         ),
         GeneralElevatedButton(
             onPressed: () {

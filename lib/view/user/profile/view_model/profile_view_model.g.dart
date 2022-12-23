@@ -41,6 +41,38 @@ mixin _$ProfileViewModel on _ProfileViewModelBase, Store {
     });
   }
 
+  late final _$isLoadingAtom =
+      Atom(name: '_ProfileViewModelBase.isLoading', context: context);
+
+  @override
+  bool get isLoading {
+    _$isLoadingAtom.reportRead();
+    return super.isLoading;
+  }
+
+  @override
+  set isLoading(bool value) {
+    _$isLoadingAtom.reportWrite(value, super.isLoading, () {
+      super.isLoading = value;
+    });
+  }
+
+  late final _$userModelAtom =
+      Atom(name: '_ProfileViewModelBase.userModel', context: context);
+
+  @override
+  UserModel? get userModel {
+    _$userModelAtom.reportRead();
+    return super.userModel;
+  }
+
+  @override
+  set userModel(UserModel? value) {
+    _$userModelAtom.reportWrite(value, super.userModel, () {
+      super.userModel = value;
+    });
+  }
+
   late final _$getImageUrlAsyncAction =
       AsyncAction('_ProfileViewModelBase.getImageUrl', context: context);
 
@@ -49,11 +81,35 @@ mixin _$ProfileViewModel on _ProfileViewModelBase, Store {
     return _$getImageUrlAsyncAction.run(() => super.getImageUrl(source));
   }
 
+  late final _$getUserAsyncAction =
+      AsyncAction('_ProfileViewModelBase.getUser', context: context);
+
+  @override
+  Future<void> getUser() {
+    return _$getUserAsyncAction.run(() => super.getUser());
+  }
+
+  late final _$_ProfileViewModelBaseActionController =
+      ActionController(name: '_ProfileViewModelBase', context: context);
+
+  @override
+  void isLoadingChange() {
+    final _$actionInfo = _$_ProfileViewModelBaseActionController.startAction(
+        name: '_ProfileViewModelBase.isLoadingChange');
+    try {
+      return super.isLoadingChange();
+    } finally {
+      _$_ProfileViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
   @override
   String toString() {
     return '''
 imageUrl: ${imageUrl},
-imageIsTrue: ${imageIsTrue}
+imageIsTrue: ${imageIsTrue},
+isLoading: ${isLoading},
+userModel: ${userModel}
     ''';
   }
 }

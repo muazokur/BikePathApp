@@ -20,12 +20,10 @@ class BaseService {
             if (jsonModel.length > 1) {
               List<T> list = [];
               if (jsonModel.values.first.runtimeType == String) {
-                print("1");
                 var userModel = model.fromJson(jsonModel as Map<String, dynamic>);
                 return userModel;
               } else {
                 print(jsonModel.values.first.runtimeType);
-                print("2");
                 jsonModel.forEach((key, value) {
                   list.add(model.fromJson(value));
                 });
@@ -55,6 +53,22 @@ class BaseService {
         id: jsonModel,
       };
       print(jsonModel);
+      await Dio().patch(
+        url,
+        data: data,
+      );
+      return true;
+    } catch (e) {
+      print(e);
+      return false;
+    }
+  }
+
+  Future<bool> uploadProfileImage(String url, String photoUrl) async {
+    try {
+      Map<String, dynamic> data = {
+        "photoUrl": photoUrl,
+      };
       await Dio().patch(
         url,
         data: data,

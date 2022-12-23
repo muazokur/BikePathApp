@@ -29,23 +29,6 @@ class UserModel extends BaseModel {
     sumNotification = json['sumNotification'];
     surname = json['surname'];
   }
-  UserModel fromString(Map<String, dynamic> json) {
-    email = json['email'];
-    id = json['id'];
-    name = json['name'];
-    photoUrl = json['photoUrl'];
-    point = json['point'];
-    sumNotification = json['sumNotification'];
-    surname = json['surname'];
-    return UserModel(
-        name: name,
-        surname: surname,
-        id: id,
-        email: email,
-        photoUrl: photoUrl,
-        point: point,
-        sumNotification: sumNotification);
-  }
 
   @override
   fromJson(Map<String, dynamic> json) {
