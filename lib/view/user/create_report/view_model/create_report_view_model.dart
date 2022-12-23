@@ -14,7 +14,7 @@ part 'create_report_view_model.g.dart';
 // ignore: library_private_types_in_public_api
 
 class CreateReportViewModel extends _CreateReportViewModelBase
-    with _$CreateReportViewModel, ReportService {
+    with _$CreateReportViewModel, CreateReportService {
   static CreateReportViewModel? _instance;
   static CreateReportViewModel get instance {
     _instance ??= CreateReportViewModel._init();
@@ -24,7 +24,7 @@ class CreateReportViewModel extends _CreateReportViewModelBase
   CreateReportViewModel._init();
 }
 
-abstract class _CreateReportViewModelBase with Store, BaseViewModel, ReportService {
+abstract class _CreateReportViewModelBase with Store, BaseViewModel, CreateReportService {
   late TextEditingController titleController;
   late TextEditingController descriptionController;
   GlobalKey<FormState> formState = GlobalKey();
