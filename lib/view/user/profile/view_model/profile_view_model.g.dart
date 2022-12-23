@@ -89,6 +89,15 @@ mixin _$ProfileViewModel on _ProfileViewModelBase, Store {
     return _$getUserAsyncAction.run(() => super.getUser());
   }
 
+  late final _$changeProfileImageAsyncAction =
+      AsyncAction('_ProfileViewModelBase.changeProfileImage', context: context);
+
+  @override
+  Future<dynamic> changeProfileImage() {
+    return _$changeProfileImageAsyncAction
+        .run(() => super.changeProfileImage());
+  }
+
   late final _$_ProfileViewModelBaseActionController =
       ActionController(name: '_ProfileViewModelBase', context: context);
 

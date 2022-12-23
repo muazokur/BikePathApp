@@ -18,7 +18,7 @@ abstract class _GoogleMapViewModelBase with Store, BaseViewModel {
   @observable
   bool isLoadingLocation = false;
   @observable
-  late Address adress;
+  Address? adress;
 
   @action
   void isLoadingLocationChange() {

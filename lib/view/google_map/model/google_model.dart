@@ -8,6 +8,7 @@ class GoogleModel {
 
   addCurrentLocation(double latitude, double longitude) {
     print("----------<<$latitude");
+    _currentLocation.clear();
     _currentLocation.add(latitude);
     _currentLocation.add(longitude);
   }

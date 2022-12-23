@@ -1,6 +1,7 @@
 import 'package:bike_path_app/core/base/model/base_view_model.dart';
 import 'package:bike_path_app/core/constants/navigation/navigation_constant.dart';
 import 'package:bike_path_app/core/init/navigation/navigation_service.dart';
+import 'package:bike_path_app/view/user/create_report/service/report_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:mobx/mobx.dart';
@@ -8,7 +9,8 @@ part 'create_report_view_model.g.dart';
 
 // ignore: library_private_types_in_public_api
 
-class CreateReportViewModel extends _CreateReportViewModelBase with _$CreateReportViewModel {
+class CreateReportViewModel extends _CreateReportViewModelBase
+    with _$CreateReportViewModel, ReportService {
   static CreateReportViewModel? _instance;
   static CreateReportViewModel get instance {
     _instance ??= CreateReportViewModel._init();
@@ -18,7 +20,7 @@ class CreateReportViewModel extends _CreateReportViewModelBase with _$CreateRepo
   CreateReportViewModel._init();
 }
 
-abstract class _CreateReportViewModelBase with Store, BaseViewModel {
+abstract class _CreateReportViewModelBase with Store, BaseViewModel, ReportService {
   late TextEditingController titleController;
   late TextEditingController descriptionController;
   GlobalKey<FormState> formState = GlobalKey();
@@ -79,6 +81,8 @@ abstract class _CreateReportViewModelBase with Store, BaseViewModel {
     print(title);
     print(description);
     print(location);
+
+    //addReport();
     return true;
   }
 }

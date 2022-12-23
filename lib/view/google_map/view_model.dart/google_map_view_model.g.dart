@@ -61,13 +61,13 @@ mixin _$GoogleMapViewModel on _GoogleMapViewModelBase, Store {
       Atom(name: '_GoogleMapViewModelBase.adress', context: context);
 
   @override
-  Address get adress {
+  Address? get adress {
     _$adressAtom.reportRead();
     return super.adress;
   }
 
   @override
-  set adress(Address value) {
+  set adress(Address? value) {
     _$adressAtom.reportWrite(value, super.adress, () {
       super.adress = value;
     });

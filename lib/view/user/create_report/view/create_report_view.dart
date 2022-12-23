@@ -65,6 +65,7 @@ class CreateReportView extends StatelessWidget {
           } else {
             print("basarisiz");
           }
+          //viewModel.addReport();
         },
         text: "Bildiri Oluştur");
   }
@@ -88,7 +89,7 @@ class CreateReportView extends StatelessWidget {
   IconTextFormField descriptionTextFormField(CreateReportViewModel viewModel) {
     return IconTextFormField(
       controller: viewModel.descriptionController,
-      labelText: "Açıklama",
+      labelText: "Açiklama",
       icon: Icons.description_sharp,
     );
   }
@@ -96,7 +97,7 @@ class CreateReportView extends StatelessWidget {
   IconTextFormField titleTextFormField(CreateReportViewModel viewModel) {
     return IconTextFormField(
       controller: viewModel.titleController,
-      labelText: "Başlık",
+      labelText: "Başlik",
       icon: Icons.description_rounded,
     );
   }
@@ -115,7 +116,7 @@ class CreateReportView extends StatelessWidget {
                   viewModel.getImageUrl(ImageSource.camera);
                   Navigator.pop(dialogContext!);
                 },
-                text: "Kamerayı Aç"),
+                text: "Kamerayi Aç"),
           ),
           GeneralElevatedButton(
               onPressed: () {
