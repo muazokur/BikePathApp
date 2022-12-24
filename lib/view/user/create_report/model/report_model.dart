@@ -12,8 +12,10 @@ class ReportModel extends BaseModel {
   String? title;
   String? id;
   bool? state;
+  String? key;
 
   ReportModel({
+    this.key,
     required this.address,
     this.commentCount = 0,
     this.comments,
@@ -41,6 +43,7 @@ class ReportModel extends BaseModel {
     title = json['title'];
     id = json['id'];
     state = json['state'];
+    key = json['key'];
   }
 
   @override
@@ -59,6 +62,8 @@ class ReportModel extends BaseModel {
     data['title'] = title;
     data['id'] = id;
     data['state'] = state;
+    data['key'] = key;
+
     return data;
   }
 

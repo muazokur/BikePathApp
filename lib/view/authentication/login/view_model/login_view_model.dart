@@ -40,6 +40,11 @@ abstract class _LoginViewModelBase with Store, BaseViewModel, LoginService {
     isLoading = !isLoading;
   }
 
+  @override
+  bool update(String key, dynamic value) {
+    return true;
+  }
+
   @action
   Future<bool> fetchLoginService() async {
     isLoadingChange();

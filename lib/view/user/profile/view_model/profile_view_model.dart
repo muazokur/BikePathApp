@@ -33,6 +33,11 @@ abstract class _ProfileViewModelBase with Store, BaseViewModel, ProfileService {
   }
 
   @override
+  bool update(String key, dynamic value) {
+    return true;
+  }
+
+  @override
   void init() async {
     reportText = LocaleKeys.profile_page_sum_report.locale;
     pointText = LocaleKeys.profile_page_point.locale;

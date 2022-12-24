@@ -11,12 +11,19 @@ class ReportCard extends StatelessWidget {
     this.tralling,
     this.leadingCircleAvatar,
     required this.onTap,
+    this.likeCount,
+    this.commentCount,
+    this.id,
   }) : super(key: key);
 
   final String? title;
   final String? subtitle;
   final String? tralling;
   final String? leadingCircleAvatar;
+  final int? likeCount;
+  final int? commentCount;
+  final String? id;
+
   final void Function() onTap;
   @override
   Widget build(BuildContext context) {
@@ -29,8 +36,8 @@ class ReportCard extends StatelessWidget {
               minLeadingWidth: context.width * 0.1,
               contentPadding: context.paddingMedium * 0,
               leading: Container(
-                color: Colors.green,
-                child: Image.asset(
+                color: Colors.transparent,
+                child: Image.network(
                   leadingCircleAvatar ?? "none",
                   fit: BoxFit.contain,
                 ),
@@ -56,7 +63,7 @@ class ReportCard extends StatelessWidget {
             ),
             Row(
               children: [
-                LikeButton(),
+                LikeButton(count: likeCount!, id: id),
                 SizedBox(
                   width: context.width * 0.020,
                 ),

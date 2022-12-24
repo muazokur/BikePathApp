@@ -7,9 +7,9 @@ class ServiceConstants {
 
   static final firebaseUrl = _api_url.json;
 
-  static final users = "$_api_url/users".json;
+  static const users = "$_api_url/users";
 
-  static final reports = "$_api_url/reports".json;
+  static const reports = "$_api_url/reports";
 
   static final userId = FirebaseEmailAuth.instance.auth.currentUser!.uid;
 

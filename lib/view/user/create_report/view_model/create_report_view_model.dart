@@ -5,7 +5,7 @@ import 'package:bike_path_app/core/constants/navigation/navigation_constant.dart
 import 'package:bike_path_app/core/init/navigation/navigation_service.dart';
 import 'package:bike_path_app/core/network/date_service.dart';
 import 'package:bike_path_app/core/network/firebase_storage.dart';
-import 'package:bike_path_app/view/user/create_report/service/report_service.dart';
+import 'package:bike_path_app/view/user/create_report/service/create_report_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:mobx/mobx.dart';
@@ -34,6 +34,11 @@ abstract class _CreateReportViewModelBase with Store, BaseViewModel, CreateRepor
   void init() {
     titleController = TextEditingController();
     descriptionController = TextEditingController();
+  }
+
+  @override
+  bool update(String key, dynamic value) {
+    return true;
   }
 
   @override

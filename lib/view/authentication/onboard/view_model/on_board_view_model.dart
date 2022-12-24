@@ -33,6 +33,10 @@ abstract class _OnBoardViewModelBase with Store, BaseViewModel {
 
   @observable
   bool isLoading = false;
+  @override
+  bool update(String key, dynamic value) {
+    return true;
+  }
 
   @action
   void changeCurrentIndex(int value) {

@@ -37,6 +37,11 @@ abstract class SignInViewModelBase with Store, BaseViewModel, SignInService {
     isLockOpen = !isLockOpen;
   }
 
+  @override
+  bool update(String key, dynamic value) {
+    return true;
+  }
+
   @action
   void isLoadingChange() {
     isLoading = !isLoading;

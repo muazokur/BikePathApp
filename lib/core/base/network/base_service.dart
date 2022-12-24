@@ -1,14 +1,19 @@
 import 'dart:io';
 
 import 'package:bike_path_app/core/base/model/base_model.dart';
+import 'package:bike_path_app/core/constants/enums/report_model_enum.dart';
 import 'package:bike_path_app/view/user/create_report/model/report_model.dart';
 import 'package:bike_path_app/view/user/model/user_model.dart';
 import 'package:dio/dio.dart';
+
+import '../generate/generate_key.dart';
 
 class BaseService {
   static final BaseService _instance = BaseService._init();
   BaseService._init();
   static BaseService get instance => _instance;
+
+  List<dynamic> reportKeysList = [];
 
   Future get<T extends BaseModel>(String url, T model) async {
     try {
@@ -26,6 +31,7 @@ class BaseService {
                 jsonModel.forEach((key, value) {
                   list.add(model.fromJson(value));
                 });
+                print(ReportModelEnum.commentCount.name);
                 return list;
               }
             }
@@ -65,21 +71,28 @@ class BaseService {
 
   Future<bool> postReport(String id, String url, String photo, String title, String description,
       List<double> location, String date, String address, bool state) async {
+    String key = GenerateKey.instance.createKey();
+
     try {
       var jsonModel = ReportModel(
-          id: id,
-          state: state,
-          address: address,
-          date: date,
-          description: description,
-          location: location,
-          photo: photo,
-          title: title);
-      await Dio().post(
+              key: key,
+              id: id,
+              state: state,
+              address: address,
+              date: date,
+              description: description,
+              location: location,
+              photo: photo,
+              title: title)
+          .toJson();
+      Map<String, Map<String, dynamic>> data = {
+        key: jsonModel,
+      };
+      await Dio().patch(
         url,
-        data: jsonModel,
+        data: data,
       );
-      print(jsonModel);
+      print(data);
 
       return true;
     } catch (e) {
@@ -88,10 +101,10 @@ class BaseService {
     }
   }
 
-  Future<bool> uploadProfileImage(String url, String photoUrl) async {
+  Future<bool> update(String url, String key, dynamic value) async {
     try {
       Map<String, dynamic> data = {
-        "photoUrl": photoUrl,
+        key: value,
       };
       await Dio().patch(
         url,

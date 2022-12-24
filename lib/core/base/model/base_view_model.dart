@@ -6,4 +6,5 @@ abstract class BaseViewModel {
   NavigationService navigation = NavigationService.instance;
   void setContext(BuildContext context);
   void init();
+  bool update(String key, dynamic value);
 }

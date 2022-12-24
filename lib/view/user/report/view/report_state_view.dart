@@ -126,7 +126,7 @@ GestureDetector mapButton() {
 Row interactionRow(BuildContext context) {
   return Row(
     children: [
-      LikeButton(),
+      LikeButton(count: 0),
       SizedBox(
         width: context.width * 0.020,
       ),

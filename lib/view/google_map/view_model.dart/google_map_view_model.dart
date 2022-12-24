@@ -42,6 +42,11 @@ abstract class _GoogleMapViewModelBase with Store, BaseViewModel {
     //print("<---$adress--->");
   }
 
+  @override
+  bool update(String key, dynamic value) {
+    return true;
+  }
+
   Future<Position> determinePosition() async {
     bool serviceEnabled;
     LocationPermission permission;
