@@ -14,6 +14,7 @@ class ReportCard extends StatelessWidget {
     this.likeCount,
     this.commentCount,
     this.id,
+    this.state,
   }) : super(key: key);
 
   final String? title;
@@ -23,6 +24,7 @@ class ReportCard extends StatelessWidget {
   final int? likeCount;
   final int? commentCount;
   final String? id;
+  final bool? state;
 
   final void Function() onTap;
   @override
@@ -51,7 +53,11 @@ class ReportCard extends StatelessWidget {
                     tralling ?? "",
                     style: context.textThemeLight.headline7,
                   ),
-                  const Text("Düzeltildi"),
+                  state != null
+                      ? state == false
+                          ? Text("Düzeltilmedi")
+                          : Text("Düzeltildi")
+                      : Text("")
                 ],
               ),
               onTap: () {

@@ -7,6 +7,7 @@ import '../../../../core/constants/navigation/navigation_constant.dart';
 import '../../../../core/extensions/context_extension.dart';
 import '../../../../core/init/navigation/navigation_service.dart';
 import '../../../_product/_widgets/card/report_card.dart';
+import '../view_model/index_controller.dart';
 import '../view_model/report_view_model.dart';
 
 class ReportView extends StatefulWidget {
@@ -47,12 +48,14 @@ class _ReportViewState extends State<ReportView> {
                               leadingCircleAvatar: viewModel.reportList![reverseIndex].photo,
                               tralling: viewModel.reportList![reverseIndex].date,
                               onTap: () {
+                                IndexController.instance.changeIndex(reverseIndex);
                                 NavigationService.instance
                                     .navigedToPage(path: NavigationConstants.reportStatePage);
                               },
                               likeCount: viewModel.reportList![reverseIndex].likeCount,
                               commentCount: viewModel.reportList![reverseIndex].commentCount,
                               id: viewModel.reportList![reverseIndex].key,
+                              state: viewModel.reportList![reverseIndex].state,
                             );
                           }),
                     );

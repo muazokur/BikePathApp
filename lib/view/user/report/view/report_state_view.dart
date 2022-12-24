@@ -1,6 +1,5 @@
-import 'dart:io';
-
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:bike_path_app/view/user/report/view_model/index_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_titled_container/flutter_titled_container.dart';
@@ -21,7 +20,9 @@ class ReportStateView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BaseView(
       viewModel: ReportViewModel(),
-      onModelReady: (ReportViewModel viewModel) {},
+      onModelReady: (ReportViewModel viewModel) {
+        viewModel.init();
+      },
       onPageBuilder: (context, ReportViewModel viewModel) {
         return Scaffold(
           appBar: AppBar(
@@ -31,30 +32,36 @@ class ReportStateView extends StatelessWidget {
           ),
           extendBodyBehindAppBar: true,
           body: SingleChildScrollView(
-            child: SizedBox(
-              height: context.height,
-              child: Column(
-                children: [
-                  AnimatedContainer(
-                      duration: context.lowDuration,
-                      height: context.mediaQuery.viewInsets.bottom > 0 ? 0 : context.height * 0.3,
-                      child: imageContainer(context, viewModel)),
-                  Spacer(flex: 1),
-                  Expanded(
-                    flex: 20,
-                    child: reportContainer(context, viewModel),
-                  ),
-                  Spacer(flex: 2),
-                  Expanded(
-                    flex: 38,
-                    child: commentBuilder(context),
-                  ),
-                  Spacer(flex: 1),
-                  Expanded(flex: 10, child: textFieldComment(context)),
-                  Spacer(flex: 1),
-                ],
-              ),
-            ),
+            child: Observer(builder: (_) {
+              return viewModel.isLoading == false
+                  ? Center(child: CircularProgressIndicator())
+                  : SizedBox(
+                      height: context.height,
+                      child: Column(
+                        children: [
+                          AnimatedContainer(
+                              duration: context.lowDuration,
+                              height: context.mediaQuery.viewInsets.bottom > 0
+                                  ? 0
+                                  : context.height * 0.3,
+                              child: imageContainer(context, viewModel)),
+                          Spacer(flex: 1),
+                          Expanded(
+                            flex: 20,
+                            child: reportContainer(context, viewModel),
+                          ),
+                          Spacer(flex: 2),
+                          Expanded(
+                            flex: 38,
+                            child: commentBuilder(context),
+                          ),
+                          Spacer(flex: 1),
+                          Expanded(flex: 10, child: textFieldComment(context)),
+                          Spacer(flex: 1),
+                        ],
+                      ),
+                    );
+            }),
           ),
         );
       },
@@ -63,18 +70,17 @@ class ReportStateView extends StatelessWidget {
 
   Container imageContainer(BuildContext context, ReportViewModel viewModel) {
     return Container(
-        color: Colors.transparent,
-        width: context.width,
-        child: Container(
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              fit: BoxFit.fitWidth,
-              image: FileImage(
-                File(viewModel.imageUrl!.path),
-              ),
-            ),
+      color: Colors.transparent,
+      width: context.width,
+      child: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            fit: BoxFit.fitWidth,
+            image: NetworkImage(viewModel.reportList![IndexController.onTapIndex].photo ?? "none"),
           ),
-        ));
+        ),
+      ),
+    );
   }
 }
 
@@ -97,7 +103,7 @@ Widget reportContainer(BuildContext context, ReportViewModel viewModel) {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  interactionRow(context),
+                  interactionRow(context, viewModel),
                   mapButton(),
                 ],
               )
@@ -123,10 +129,10 @@ GestureDetector mapButton() {
   );
 }
 
-Row interactionRow(BuildContext context) {
+Row interactionRow(BuildContext context, ReportViewModel viewModel) {
   return Row(
     children: [
-      LikeButton(count: 0),
+      LikeButton(count: viewModel.reportList![IndexController.onTapIndex].likeCount as int),
       SizedBox(
         width: context.width * 0.020,
       ),
@@ -139,14 +145,14 @@ Row interactionRow(BuildContext context) {
 
 AutoSizeText descriptionText(ReportViewModel viewModel, BuildContext context) {
   return AutoSizeText(
-    viewModel.description ?? "none",
+    viewModel.reportList![IndexController.onTapIndex].description.toString(),
     style: Theme.of(context).textTheme.subtitle2!.copyWith(fontWeight: FontWeight.w300, height: 2),
   );
 }
 
 Text titleText(ReportViewModel viewModel, BuildContext context) {
   return Text(
-    viewModel.title ?? "none",
+    viewModel.reportList![IndexController.onTapIndex].title ?? "none",
     style: context.textThemeLight.headline4,
   );
 }
