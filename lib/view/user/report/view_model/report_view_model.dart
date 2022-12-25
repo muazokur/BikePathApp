@@ -51,14 +51,25 @@ abstract class _ReportViewModelBase with Store, BaseViewModel, ReportService {
   }
 
   @observable
-  List<CommentId> commentList = [];
+  bool isLoadingComment = false;
+  @action
+  void isLoadingCommentChange() {
+    isLoadingComment = !isLoadingComment;
+  }
+
+  @observable
+  List<CommentId>? commentList = [];
 
   @action
   Future getReportComments(String reportId) async {
+    print(reportId);
+
     commentList = await getComment(reportId);
-    for (int i = 0; i < commentList.length; i++) {
-      print("${commentList[i].id} + + ${commentList[i].comment}");
-    }
+    // for (int i = 0; i < commentList!.length; i++) {
+    //   print("${commentList![i].id} + + ${commentList![i].comment}");
+    // }
+
+    //isLoadingCommentChange();
   }
 
   @override

@@ -89,17 +89,33 @@ mixin _$ReportViewModel on _ReportViewModelBase, Store {
     });
   }
 
+  late final _$isLoadingCommentAtom =
+      Atom(name: '_ReportViewModelBase.isLoadingComment', context: context);
+
+  @override
+  bool get isLoadingComment {
+    _$isLoadingCommentAtom.reportRead();
+    return super.isLoadingComment;
+  }
+
+  @override
+  set isLoadingComment(bool value) {
+    _$isLoadingCommentAtom.reportWrite(value, super.isLoadingComment, () {
+      super.isLoadingComment = value;
+    });
+  }
+
   late final _$commentListAtom =
       Atom(name: '_ReportViewModelBase.commentList', context: context);
 
   @override
-  List<CommentId> get commentList {
+  List<CommentId>? get commentList {
     _$commentListAtom.reportRead();
     return super.commentList;
   }
 
   @override
-  set commentList(List<CommentId> value) {
+  set commentList(List<CommentId>? value) {
     _$commentListAtom.reportWrite(value, super.commentList, () {
       super.commentList = value;
     });
@@ -137,6 +153,17 @@ mixin _$ReportViewModel on _ReportViewModelBase, Store {
   }
 
   @override
+  void isLoadingCommentChange() {
+    final _$actionInfo = _$_ReportViewModelBaseActionController.startAction(
+        name: '_ReportViewModelBase.isLoadingCommentChange');
+    try {
+      return super.isLoadingCommentChange();
+    } finally {
+      _$_ReportViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 isLoading: ${isLoading},
@@ -144,6 +171,7 @@ title: ${title},
 description: ${description},
 imageUrl: ${imageUrl},
 reportList: ${reportList},
+isLoadingComment: ${isLoadingComment},
 commentList: ${commentList}
     ''';
   }

@@ -175,27 +175,33 @@ Widget commentBuilder(BuildContext context, ReportViewModel viewModel) {
 
 Widget commentsListView(BuildContext context, ReportViewModel viewModel) {
   return Observer(builder: (_) {
-    return ListView.builder(
-      itemCount: 10,
-      shrinkWrap: true,
-      padding: context.paddingLowHorizontal,
-      itemBuilder: (context, index) => Column(
-        children: [
-          ListTile(
-            style: ListTileStyle.drawer,
-            leading: CircleAvatar(
-              backgroundColor: Colors.amber,
+    return viewModel.commentList == null
+        ? Center(
+            child: Padding(
+            padding: context.paddingHigh,
+            child: Text("Henüz yorum yok"),
+          ))
+        : ListView.builder(
+            itemCount: viewModel.commentList!.length,
+            shrinkWrap: true,
+            padding: context.paddingLowHorizontal,
+            itemBuilder: (context, index) => Column(
+              children: [
+                ListTile(
+                  style: ListTileStyle.drawer,
+                  leading: CircleAvatar(
+                    backgroundColor: Colors.amber,
+                  ),
+                  isThreeLine: true,
+                  title: Text("Mahmut Yıldırım"),
+                  subtitle: Text(viewModel.commentList![index].comment.toString()),
+                ),
+                Divider(
+                  color: Colors.black26,
+                ),
+              ],
             ),
-            isThreeLine: true,
-            title: Text("Mahmut Yıldırım"),
-            subtitle: Text("asdasdasdasdsdasda*5"),
-          ),
-          Divider(
-            color: Colors.black26,
-          ),
-        ],
-      ),
-    );
+          );
   });
 }
 

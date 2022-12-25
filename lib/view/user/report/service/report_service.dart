@@ -37,9 +37,14 @@ class ReportService {
   }
 
   Future getComment(String reportId) async {
-    var url = Service.ReportsComments.getParam(reportId);
-    List<CommentId> commentList = await BaseService.instance.get<CommentId>(url, CommentId.empty());
+    try {
+      var url = Service.ReportsComments.getParam(reportId);
+      List<CommentId> commentList =
+          await BaseService.instance.get<CommentId>(url, CommentId.empty());
 
-    return commentList;
+      return commentList;
+    } catch (e) {
+      return null;
+    }
   }
 }

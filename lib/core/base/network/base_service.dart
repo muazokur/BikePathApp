@@ -21,19 +21,20 @@ class BaseService {
         case HttpStatus.ok:
           var jsonModel = response.data;
           if (jsonModel is Map) {
-            if (jsonModel.length > 1) {
-              List<T> list = [];
-              if (jsonModel.values.first.runtimeType == String) {
-                var userModel = model.fromJson(jsonModel as Map<String, dynamic>);
-                return userModel;
-              } else {
-                jsonModel.forEach((key, value) {
-                  list.add(model.fromJson(value)); //devam et
-                });
-                return list;
-              }
+            // if (jsonModel.length > 1) {
+            //listede tek eleman olma durumu
+            List<T> list = [];
+            if (jsonModel.values.first.runtimeType == String) {
+              var userModel = model.fromJson(jsonModel as Map<String, dynamic>);
+              return userModel;
+            } else {
+              jsonModel.forEach((key, value) {
+                list.add(model.fromJson(value));
+              });
+              return list;
             }
-            return jsonModel;
+            // }
+            //  return jsonModel;
           } else if (jsonModel is List) {
             return jsonModel.map((value) {
               return model.fromJson(value);
