@@ -74,6 +74,7 @@ class BaseService {
 
     try {
       var jsonModel = ReportModel(
+              comments: "",
               key: key,
               id: id,
               state: state,
@@ -87,6 +88,7 @@ class BaseService {
       Map<String, Map<String, dynamic>> data = {
         key: jsonModel,
       };
+      print(data);
       await Dio().patch(
         url,
         data: data,
@@ -105,6 +107,25 @@ class BaseService {
       Map<String, dynamic> data = {
         key: value,
       };
+      await Dio().patch(
+        url,
+        data: data,
+      );
+      return true;
+    } catch (e) {
+      print(e);
+      return false;
+    }
+  }
+
+  Future<bool> addComment(String url, String key, dynamic value) async {
+    try {
+      var jsonModel = CommentId(id: key, comment: value).toJson();
+      Map<String, dynamic> data = {
+        key: jsonModel,
+      };
+      print(data);
+
       await Dio().patch(
         url,
         data: data,

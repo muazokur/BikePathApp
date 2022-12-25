@@ -3,7 +3,7 @@ import 'package:bike_path_app/core/base/model/base_model.dart';
 class ReportModel extends BaseModel {
   String? address;
   int? commentCount;
-  CommentModel? comments;
+  CommentModel? commentModel;
   String? date;
   String? description;
   int? likeCount;
@@ -13,12 +13,14 @@ class ReportModel extends BaseModel {
   String? id;
   bool? state;
   String? key;
+  String? comments;
 
   ReportModel({
+    this.comments,
     this.key,
     required this.address,
     this.commentCount = 0,
-    this.comments,
+    this.commentModel,
     required this.date,
     required this.description,
     this.likeCount = 0,
@@ -34,7 +36,7 @@ class ReportModel extends BaseModel {
   ReportModel.fromJson(Map<String, dynamic> json) {
     address = json['address'];
     commentCount = json['commentCount'];
-    comments = json['comments'] != null ? CommentModel.fromJson(json['comments']) : null;
+    //comments = json['comments'] != null ? CommentModel.fromJson(json['comments']) : null;
     date = json['date'];
     description = json['description'];
     likeCount = json['likeCount'];
@@ -44,6 +46,7 @@ class ReportModel extends BaseModel {
     id = json['id'];
     state = json['state'];
     key = json['key'];
+    //commentColumn = json['commentColumn'];
   }
 
   @override
@@ -51,8 +54,8 @@ class ReportModel extends BaseModel {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['address'] = address;
     data['commentCount'] = commentCount;
-    if (comments != null) {
-      data['comments'] = comments!.toJson();
+    if (commentModel != null) {
+      data['comments'] = commentModel!.toJson();
     }
     data['date'] = date;
     data['description'] = description;
@@ -63,6 +66,8 @@ class ReportModel extends BaseModel {
     data['id'] = id;
     data['state'] = state;
     data['key'] = key;
+    data['commentModel'] = commentModel;
+    data['comments'] = comments;
 
     return data;
   }

@@ -13,15 +13,28 @@ import '../../../_product/_widgets/button/like_button.dart';
 import '../../../_product/_widgets/container/radius_container.dart';
 import '../view_model/report_view_model.dart';
 
-class ReportStateView extends StatelessWidget {
+class ReportStateView extends StatefulWidget {
   const ReportStateView({Key? key}) : super(key: key);
 
   @override
+  State<ReportStateView> createState() => _ReportStateViewState();
+}
+
+class _ReportStateViewState extends State<ReportStateView> {
+  @override
+  void initState() {
+    super.initState();
+    print("INIT STATE");
+  }
+
+  @override
   Widget build(BuildContext context) {
+    print("SETSTATE");
     return BaseView(
       viewModel: ReportViewModel(),
       onModelReady: (ReportViewModel viewModel) {
         viewModel.init();
+        print("SETTTT");
       },
       onPageBuilder: (context, ReportViewModel viewModel) {
         return Scaffold(
@@ -228,6 +241,10 @@ Padding textFieldComment(BuildContext context, ReportViewModel viewModel) {
                 viewModel.addReportComment(
                     viewModel.reportList![IndexController.onTapIndex].key as String,
                     commentController.text);
+                viewModel.init();
+                viewModel.isLoadingChange();
+                // viewModel.getReportComments(
+                //     viewModel.reportList![IndexController.onTapIndex].key.toString());
               },
             )
           ],

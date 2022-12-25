@@ -23,17 +23,15 @@ class ReportService {
 
   Future addComment(String reportId, String value) async {
     var url = Service.ReportsComments.getParam(reportId);
-    List<CommentId> commentList = await BaseService.instance.get<CommentId>(url, CommentId.empty());
-    for (int i = 0; i < commentList.length; i++) {
-      print("${commentList[i].id} + + ${commentList[i].comment}");
-    }
+    print(url);
+    await BaseService.instance.addComment(url, Service.CurrentUserId.get, value);
 
-    //print(a.runtimeType);
-    //print(commentId.runtimeType);
-    //print("şeet");
-    // print(url);
-    // print(reportId);
-    // print(value);
+    //report id nereye istek atılacaağı
+    //value yorum
+    print("şeet");
+
+    print(reportId);
+    print(value);
   }
 
   Future getComment(String reportId) async {

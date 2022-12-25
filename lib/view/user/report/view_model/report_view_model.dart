@@ -47,7 +47,10 @@ abstract class _ReportViewModelBase with Store, BaseViewModel, ReportService {
       print(reportList![i].title);
     }
     getReportComments(reportList![IndexController.onTapIndex].key.toString());
+    print("sa");
+    print(isLoading);
     isLoadingChange();
+    print(isLoading);
   }
 
   @observable
@@ -63,13 +66,7 @@ abstract class _ReportViewModelBase with Store, BaseViewModel, ReportService {
   @action
   Future getReportComments(String reportId) async {
     print(reportId);
-
     commentList = await getComment(reportId);
-    // for (int i = 0; i < commentList!.length; i++) {
-    //   print("${commentList![i].id} + + ${commentList![i].comment}");
-    // }
-
-    //isLoadingCommentChange();
   }
 
   @override
