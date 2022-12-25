@@ -1,6 +1,7 @@
 import 'package:bike_path_app/core/base/model/base_view_model.dart';
 import 'package:bike_path_app/view/user/create_report/model/report_model.dart';
 import 'package:bike_path_app/view/user/report/service/report_service.dart';
+import 'package:bike_path_app/view/user/report/view_model/index_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:mobx/mobx.dart';
@@ -45,12 +46,29 @@ abstract class _ReportViewModelBase with Store, BaseViewModel, ReportService {
     for (int i = 0; i < reportList!.length; i++) {
       print(reportList![i].title);
     }
+    getReportComments(reportList![IndexController.onTapIndex].key.toString());
     isLoadingChange();
+  }
+
+  @observable
+  List<CommentId> commentList = [];
+
+  @action
+  Future getReportComments(String reportId) async {
+    commentList = await getComment(reportId);
+    for (int i = 0; i < commentList.length; i++) {
+      print("${commentList[i].id} + + ${commentList[i].comment}");
+    }
   }
 
   @override
   bool update(String? key, dynamic value) {
     updateLike(key!, value);
+    return true;
+  }
+
+  bool addReportComment(String reportId, dynamic value) {
+    addComment(reportId, value);
     return true;
   }
 }

@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:bike_path_app/core/base/model/base_model.dart';
-import 'package:bike_path_app/core/constants/enums/report_model_enum.dart';
 import 'package:bike_path_app/view/user/create_report/model/report_model.dart';
 import 'package:bike_path_app/view/user/model/user_model.dart';
 import 'package:dio/dio.dart';
@@ -29,9 +28,8 @@ class BaseService {
                 return userModel;
               } else {
                 jsonModel.forEach((key, value) {
-                  list.add(model.fromJson(value));
+                  list.add(model.fromJson(value)); //devam et
                 });
-                print(ReportModelEnum.commentCount.name);
                 return list;
               }
             }

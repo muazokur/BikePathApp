@@ -89,12 +89,37 @@ mixin _$ReportViewModel on _ReportViewModelBase, Store {
     });
   }
 
+  late final _$commentListAtom =
+      Atom(name: '_ReportViewModelBase.commentList', context: context);
+
+  @override
+  List<CommentId> get commentList {
+    _$commentListAtom.reportRead();
+    return super.commentList;
+  }
+
+  @override
+  set commentList(List<CommentId> value) {
+    _$commentListAtom.reportWrite(value, super.commentList, () {
+      super.commentList = value;
+    });
+  }
+
   late final _$getReportAsyncAction =
       AsyncAction('_ReportViewModelBase.getReport', context: context);
 
   @override
   Future<dynamic> getReport() {
     return _$getReportAsyncAction.run(() => super.getReport());
+  }
+
+  late final _$getReportCommentsAsyncAction =
+      AsyncAction('_ReportViewModelBase.getReportComments', context: context);
+
+  @override
+  Future<dynamic> getReportComments(String reportId) {
+    return _$getReportCommentsAsyncAction
+        .run(() => super.getReportComments(reportId));
   }
 
   late final _$_ReportViewModelBaseActionController =
@@ -118,7 +143,8 @@ isLoading: ${isLoading},
 title: ${title},
 description: ${description},
 imageUrl: ${imageUrl},
-reportList: ${reportList}
+reportList: ${reportList},
+commentList: ${commentList}
     ''';
   }
 }

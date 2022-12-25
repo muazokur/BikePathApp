@@ -3,7 +3,7 @@ import 'package:bike_path_app/core/base/model/base_model.dart';
 class ReportModel extends BaseModel {
   String? address;
   int? commentCount;
-  Comments? comments;
+  CommentModel? comments;
   String? date;
   String? description;
   int? likeCount;
@@ -34,7 +34,7 @@ class ReportModel extends BaseModel {
   ReportModel.fromJson(Map<String, dynamic> json) {
     address = json['address'];
     commentCount = json['commentCount'];
-    comments = json['comments'] != null ? Comments.fromJson(json['comments']) : null;
+    comments = json['comments'] != null ? CommentModel.fromJson(json['comments']) : null;
     date = json['date'];
     description = json['description'];
     likeCount = json['likeCount'];
@@ -73,21 +73,55 @@ class ReportModel extends BaseModel {
   }
 }
 
-class Comments {
-  String? id1;
-  String? id2;
+class CommentModel extends BaseModel {
+  CommentId? commentId;
 
-  Comments({this.id1, this.id2});
+  CommentModel({this.commentId});
 
-  Comments.fromJson(Map<String, dynamic> json) {
-    id1 = json['id1'];
-    id2 = json['id2'];
+  CommentModel.fromJson(Map<String, dynamic> json) {
+    commentId = json['commentId'] != null ? CommentId.fromJson(json['commentId']) : null;
   }
+  CommentModel.empty();
 
+  @override
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    data['id1'] = id1;
-    data['id2'] = id2;
+    if (commentId != null) {
+      data['commentId'] = commentId!.toJson();
+    }
     return data;
+  }
+
+  @override
+  fromJson(Map<String, dynamic> json) {
+    return CommentId.fromJson(json);
+  }
+}
+
+class CommentId extends BaseModel {
+  String? comment;
+  String? id;
+  List<CommentId> commentList = [];
+
+  CommentId({this.comment, this.id});
+
+  CommentId.fromJson(Map<String, dynamic> json) {
+    comment = json['comment'];
+    id = json['id'];
+  }
+
+  CommentId.empty();
+
+  @override
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['comment'] = comment;
+    data['id'] = id;
+    return data;
+  }
+
+  @override
+  fromJson(Map<String, dynamic> json) {
+    return CommentId.fromJson(json);
   }
 }

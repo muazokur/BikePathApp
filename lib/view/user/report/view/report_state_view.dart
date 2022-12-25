@@ -31,7 +31,7 @@ class ReportStateView extends StatelessWidget {
             backgroundColor: Colors.transparent,
           ),
           extendBodyBehindAppBar: true,
-          body: SingleChildScrollView(
+          body: SizedBox.expand(
             child: Observer(builder: (_) {
               return viewModel.isLoading == false
                   ? Center(child: CircularProgressIndicator())
@@ -53,10 +53,10 @@ class ReportStateView extends StatelessWidget {
                           Spacer(flex: 2),
                           Expanded(
                             flex: 38,
-                            child: commentBuilder(context),
+                            child: SingleChildScrollView(child: commentBuilder(context, viewModel)),
                           ),
                           Spacer(flex: 1),
-                          Expanded(flex: 10, child: textFieldComment(context)),
+                          Expanded(flex: 10, child: textFieldComment(context, viewModel)),
                           Spacer(flex: 1),
                         ],
                       ),
@@ -123,7 +123,7 @@ GestureDetector mapButton() {
     child: Row(
       children: [
         Icon(Icons.location_on_outlined, color: Colors.black38),
-        Text("Haritada görmek için tıklayınız"),
+        Text("Haritada görmek için tiklayiniz"),
       ],
     ),
   );
@@ -157,45 +157,51 @@ Text titleText(ReportViewModel viewModel, BuildContext context) {
   );
 }
 
-Widget commentBuilder(BuildContext context) {
+Widget commentBuilder(BuildContext context, ReportViewModel viewModel) {
   return Padding(
     padding: context.paddingLowHorizontal,
-    child: TitledContainer(
-      title: 'Yorumlar',
-      fontSize: context.textTheme.subtitle1!.fontSize,
-      child: RadiusContainer(
-        child: commentsListView(context),
+    child: Padding(
+      padding: context.paddingLowVertical,
+      child: TitledContainer(
+        title: 'Yorumlar',
+        fontSize: context.textTheme.subtitle1!.fontSize,
+        child: RadiusContainer(
+          child: commentsListView(context, viewModel),
+        ),
       ),
     ),
   );
 }
 
-ListView commentsListView(BuildContext context) {
-  return ListView.builder(
-    shrinkWrap: true,
-    padding: context.paddingLowHorizontal,
-    itemBuilder: (context, index) => Column(
-      children: [
-        ListTile(
-          style: ListTileStyle.drawer,
-          leading: CircleAvatar(
-            backgroundColor: Colors.amber,
+Widget commentsListView(BuildContext context, ReportViewModel viewModel) {
+  return Observer(builder: (_) {
+    return ListView.builder(
+      itemCount: 10,
+      shrinkWrap: true,
+      padding: context.paddingLowHorizontal,
+      itemBuilder: (context, index) => Column(
+        children: [
+          ListTile(
+            style: ListTileStyle.drawer,
+            leading: CircleAvatar(
+              backgroundColor: Colors.amber,
+            ),
+            isThreeLine: true,
+            title: Text("Mahmut Yıldırım"),
+            subtitle: Text("asdasdasdasdsdasda*5"),
           ),
-          isThreeLine: true,
-          title: Text("Mahmut Yıldırım"),
-          subtitle: Text(
-            "Bencede düzeltilmesi gerekir." * 3,
+          Divider(
+            color: Colors.black26,
           ),
-        ),
-        Divider(
-          color: Colors.black26,
-        ),
-      ],
-    ),
-  );
+        ],
+      ),
+    );
+  });
 }
 
-Padding textFieldComment(BuildContext context) {
+Padding textFieldComment(BuildContext context, ReportViewModel viewModel) {
+  TextEditingController commentController = TextEditingController();
+
   return Padding(
     padding: context.paddingLowHorizontal,
     child: RadiusContainer(
@@ -206,12 +212,17 @@ Padding textFieldComment(BuildContext context) {
             Expanded(
               child: TextField(
                 maxLines: 8, //or null
-                decoration: InputDecoration.collapsed(hintText: "Yorum Yazın"),
+                controller: commentController,
+                decoration: InputDecoration.collapsed(hintText: "Yorum Yazin"),
               ),
             ),
             InkWell(
               child: Text("Paylaş"),
-              onTap: () {},
+              onTap: () {
+                viewModel.addReportComment(
+                    viewModel.reportList![IndexController.onTapIndex].key as String,
+                    commentController.text);
+              },
             )
           ],
         ),
