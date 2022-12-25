@@ -14,8 +14,12 @@ class ReportModel extends BaseModel {
   bool? state;
   String? key;
   String? comments;
+  String? userName;
+  String? userSurName;
 
   ReportModel({
+    this.userName,
+    this.userSurName,
     this.comments,
     this.key,
     required this.address,
@@ -46,6 +50,9 @@ class ReportModel extends BaseModel {
     id = json['id'];
     state = json['state'];
     key = json['key'];
+    userName = json['userName'];
+    userSurName = json['userSurName'];
+
     //commentColumn = json['commentColumn'];
   }
 
@@ -68,6 +75,8 @@ class ReportModel extends BaseModel {
     data['key'] = key;
     data['commentModel'] = commentModel;
     data['comments'] = comments;
+    data['userName'] = userName;
+    data['userSurName'] = userSurName;
 
     return data;
   }
@@ -106,13 +115,19 @@ class CommentModel extends BaseModel {
 class CommentId extends BaseModel {
   String? comment;
   String? id;
+  String? userName;
+  String? userSurname;
+  String? userPhotoUrl;
   List<CommentId> commentList = [];
 
-  CommentId({this.comment, this.id});
+  CommentId({this.comment, this.id, this.userName, this.userSurname, this.userPhotoUrl});
 
   CommentId.fromJson(Map<String, dynamic> json) {
     comment = json['comment'];
     id = json['id'];
+    userName = json['userName'];
+    userSurname = json['userSurname'];
+    userPhotoUrl = json['userPhotoUrl'];
   }
 
   CommentId.empty();
@@ -122,6 +137,10 @@ class CommentId extends BaseModel {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['comment'] = comment;
     data['id'] = id;
+    data['userName'] = userName;
+    data['userSurname'] = userSurname;
+    data['userPhotoUrl'] = userPhotoUrl;
+
     return data;
   }
 

@@ -43,14 +43,16 @@ abstract class _ReportViewModelBase with Store, BaseViewModel, ReportService {
   @action
   Future getReport() async {
     reportList = await getReports();
-    for (int i = 0; i < reportList!.length; i++) {
-      print(reportList![i].title);
+    if (reportList != null) {
+      for (int i = 0; i < reportList!.length; i++) {
+        print(reportList![i].title);
+      }
+      getReportComments(reportList![IndexController.onTapIndex].key.toString());
+      print("sa");
+      print(isLoading);
+      isLoadingChange();
+      print(isLoading);
     }
-    getReportComments(reportList![IndexController.onTapIndex].key.toString());
-    print("sa");
-    print(isLoading);
-    isLoadingChange();
-    print(isLoading);
   }
 
   @observable

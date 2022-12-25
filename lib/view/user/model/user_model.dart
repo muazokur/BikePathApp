@@ -8,7 +8,6 @@ class UserModel extends BaseModel {
   late String photoUrl;
   late String id;
   late String email;
-
   UserModel(
       {required this.name,
       this.point = 0,
@@ -47,4 +46,10 @@ class UserModel extends BaseModel {
     data['email'] = email;
     return data;
   }
+}
+
+class UserModelCache {
+  static late String userName;
+  static late String surName;
+  static late String photoUrl;
 }

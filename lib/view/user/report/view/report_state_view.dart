@@ -8,8 +8,7 @@ import '../../../../core/base/view/base_view.dart';
 import '../../../../core/constants/navigation/navigation_constant.dart';
 import '../../../../core/extensions/context_extension.dart';
 import '../../../../core/init/navigation/navigation_service.dart';
-import '../../../_product/_widgets/button/comment_button.dart';
-import '../../../_product/_widgets/button/like_button.dart';
+import '../../../_product/_constants/image_path_png.dart';
 import '../../../_product/_widgets/container/radius_container.dart';
 import '../view_model/report_view_model.dart';
 
@@ -136,7 +135,7 @@ GestureDetector mapButton() {
     child: Row(
       children: [
         Icon(Icons.location_on_outlined, color: Colors.black38),
-        Text("Haritada görmek için tiklayiniz"),
+        Text("Haritada gör"),
       ],
     ),
   );
@@ -145,13 +144,9 @@ GestureDetector mapButton() {
 Row interactionRow(BuildContext context, ReportViewModel viewModel) {
   return Row(
     children: [
-      LikeButton(count: viewModel.reportList![IndexController.onTapIndex].likeCount as int),
-      SizedBox(
-        width: context.width * 0.020,
-      ),
-      CommentButton(
-        onTap: () {},
-      ),
+      Text("İlani Veren: "),
+      Text(
+          "${viewModel.reportList![IndexController.onTapIndex].userName} ${viewModel.reportList![IndexController.onTapIndex].userSurName}"),
     ],
   );
 }
@@ -203,10 +198,12 @@ Widget commentsListView(BuildContext context, ReportViewModel viewModel) {
                 ListTile(
                   style: ListTileStyle.drawer,
                   leading: CircleAvatar(
-                    backgroundColor: Colors.amber,
+                    backgroundColor: Colors.transparent,
+                    child: userImage(viewModel, index),
                   ),
                   isThreeLine: true,
-                  title: Text("Mahmut Yıldırım"),
+                  title: Text(
+                      "${viewModel.commentList![index].userName} ${viewModel.commentList![index].userSurname}"),
                   subtitle: Text(viewModel.commentList![index].comment.toString()),
                 ),
                 Divider(
@@ -216,6 +213,17 @@ Widget commentsListView(BuildContext context, ReportViewModel viewModel) {
             ),
           );
   });
+}
+
+Image userImage(ReportViewModel viewModel, int index) {
+  if (viewModel.commentList![index].userPhotoUrl.toString() == "") {
+    return Image.asset(
+      PNGImagePaths.instance.mePNG,
+      fit: BoxFit.fitWidth,
+    );
+  } else {
+    return Image.network(viewModel.commentList![index].userPhotoUrl.toString());
+  }
 }
 
 Padding textFieldComment(BuildContext context, ReportViewModel viewModel) {

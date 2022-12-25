@@ -68,12 +68,24 @@ class BaseService {
     }
   }
 
-  Future<bool> postReport(String id, String url, String photo, String title, String description,
-      List<double> location, String date, String address, bool state) async {
+  Future<bool> postReport(
+      String id,
+      String url,
+      String photo,
+      String title,
+      String description,
+      List<double> location,
+      String date,
+      String address,
+      bool state,
+      String userName,
+      String userSurname) async {
     String key = GenerateKey.instance.createKey();
 
     try {
       var jsonModel = ReportModel(
+              userName: userName,
+              userSurName: userSurname,
               comments: "",
               key: key,
               id: id,
@@ -118,9 +130,16 @@ class BaseService {
     }
   }
 
-  Future<bool> addComment(String url, String key, dynamic value) async {
+  Future<bool> addComment(String url, String key, dynamic value, String userName,
+      String userSurName, String userPhoto) async {
     try {
-      var jsonModel = CommentId(id: key, comment: value).toJson();
+      var jsonModel = CommentId(
+              id: key,
+              comment: value,
+              userName: userName,
+              userSurname: userSurName,
+              userPhotoUrl: userPhoto)
+          .toJson();
       Map<String, dynamic> data = {
         key: jsonModel,
       };

@@ -32,7 +32,7 @@ class _ReportViewState extends State<ReportView> {
           padding: context.paddingLow,
           child: Observer(builder: (_) {
             return viewModel.isLoading == false
-                ? Center(child: CircularProgressIndicator())
+                ? Center(child: SizedBox())
                 : Observer(builder: (_) {
                     return Align(
                       alignment: Alignment.topCenter,
@@ -41,7 +41,9 @@ class _ReportViewState extends State<ReportView> {
                           dragStartBehavior: DragStartBehavior.start,
                           itemCount: viewModel.reportList!.length,
                           itemBuilder: (context, index) {
-                            int reverseIndex = (viewModel.reportList!.length - 1) - index;
+                            //int reverseIndex = (viewModel.reportList!.length - 1) - index;
+                            int reverseIndex = index;
+                            print(viewModel.reportList!.length);
                             return ReportCard(
                               title: viewModel.reportList![reverseIndex].title,
                               subtitle: viewModel.reportList![reverseIndex].description,

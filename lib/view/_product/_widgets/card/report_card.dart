@@ -73,9 +73,29 @@ class ReportCard extends StatelessWidget {
                 SizedBox(
                   width: context.width * 0.020,
                 ),
-                CommentButton(onTap: onTap),
+                commentBtn(context),
               ],
             )
+          ],
+        ),
+      ),
+    );
+  }
+
+  GestureDetector commentBtn(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: SizedBox(
+        child: Row(
+          children: [
+            Icon(
+              Icons.insert_comment_outlined,
+              color: Colors.black38,
+            ),
+            SizedBox(
+              width: context.width * 0.005,
+            ),
+            Text("Yorum yap")
           ],
         ),
       ),

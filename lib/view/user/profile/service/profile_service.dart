@@ -6,7 +6,13 @@ import '../../model/user_model.dart';
 
 class ProfileService {
   Future getProfile() async {
-    return await BaseService.instance.get<UserModel>(Service.CurrentUser.get, UserModel.empty());
+    UserModel userModel =
+        await BaseService.instance.get<UserModel>(Service.CurrentUser.get, UserModel.empty());
+    UserModelCache.userName = userModel.name;
+    UserModelCache.surName = userModel.surname;
+    UserModelCache.photoUrl = userModel.photoUrl;
+
+    return userModel;
   }
 
   void uploadProfilePhoto(String url) {

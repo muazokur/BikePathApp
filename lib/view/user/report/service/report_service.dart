@@ -1,4 +1,5 @@
 import 'package:bike_path_app/core/constants/enums/report_model_enum.dart';
+import 'package:bike_path_app/view/user/model/user_model.dart';
 
 import '../../../../core/base/network/base_service.dart';
 import '../../../../core/constants/enums/service_enums.dart';
@@ -24,14 +25,8 @@ class ReportService {
   Future addComment(String reportId, String value) async {
     var url = Service.ReportsComments.getParam(reportId);
     print(url);
-    await BaseService.instance.addComment(url, Service.CurrentUserId.get, value);
-
-    //report id nereye istek atılacaağı
-    //value yorum
-    print("şeet");
-
-    print(reportId);
-    print(value);
+    await BaseService.instance.addComment(url, Service.CurrentUserId.get, value,
+        UserModelCache.userName, UserModelCache.surName, UserModelCache.photoUrl);
   }
 
   Future getComment(String reportId) async {
