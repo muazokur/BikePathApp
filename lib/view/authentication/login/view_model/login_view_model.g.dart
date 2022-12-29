@@ -49,6 +49,16 @@ mixin _$LoginViewModel on _LoginViewModelBase, Store {
     return _$fetchLoginServiceAsyncAction.run(() => super.fetchLoginService());
   }
 
+  late final _$fetchLoginServiceAdminAsyncAction = AsyncAction(
+      '_LoginViewModelBase.fetchLoginServiceAdmin',
+      context: context);
+
+  @override
+  Future<bool> fetchLoginServiceAdmin() {
+    return _$fetchLoginServiceAdminAsyncAction
+        .run(() => super.fetchLoginServiceAdmin());
+  }
+
   late final _$_LoginViewModelBaseActionController =
       ActionController(name: '_LoginViewModelBase', context: context);
 

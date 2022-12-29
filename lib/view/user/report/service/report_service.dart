@@ -22,6 +22,11 @@ class ReportService {
     await BaseService.instance.update(url, ReportModelEnum.likeCount.name, value);
   }
 
+  Future updateReportComment(String id, dynamic value) async {
+    var url = Service.Reports.getParam(id);
+    await BaseService.instance.update(url, ReportModelEnum.state.name, value);
+  }
+
   Future addComment(String reportId, String value) async {
     var url = Service.ReportsComments.getParam(reportId);
     print(url);

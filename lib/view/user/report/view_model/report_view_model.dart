@@ -48,7 +48,6 @@ abstract class _ReportViewModelBase with Store, BaseViewModel, ReportService {
         print(reportList![i].title);
       }
       getReportComments(reportList![IndexController.onTapIndex].key.toString());
-      print("sa");
       print(isLoading);
       isLoadingChange();
       print(isLoading);
@@ -75,6 +74,10 @@ abstract class _ReportViewModelBase with Store, BaseViewModel, ReportService {
   bool update(String? key, dynamic value) {
     updateLike(key!, value);
     return true;
+  }
+
+  changeReportState(String? key, dynamic value) {
+    updateReportComment(key!, value);
   }
 
   bool addReportComment(String reportId, dynamic value) {

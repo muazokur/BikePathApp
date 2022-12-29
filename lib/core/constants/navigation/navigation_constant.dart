@@ -11,4 +11,6 @@ class NavigationConstants {
   static const acceptReportPage = "/accept_report_page";
   static const reportStatePage = "/report_state_page";
   static const googleMapView = "/google_map_view";
+  static const employeeView = "/employee_view";
+  static const employeeStateView = "/employee_state_view";
 }

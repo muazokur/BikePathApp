@@ -49,7 +49,7 @@ class UserModel extends BaseModel {
 }
 
 class UserModelCache {
-  static late String userName;
-  static late String surName;
-  static late String photoUrl;
+  static String userName = "admin";
+  static String surName = "";
+  static String photoUrl = "";
 }

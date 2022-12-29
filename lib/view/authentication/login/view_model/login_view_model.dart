@@ -61,4 +61,21 @@ abstract class _LoginViewModelBase with Store, BaseViewModel, LoginService {
       return false;
     }
   }
+
+  @action
+  Future<bool> fetchLoginServiceAdmin() async {
+    isLoadingChange();
+    if (formState.currentState!.validate()) {
+      var state = await logIn(emailController.text, passwordController.text);
+      if (state) {
+        NavigationService.instance.navigedToPage(path: NavigationConstants.employeeView);
+        return true;
+      } else {
+        return false;
+      }
+      //print("${emailController.text} ${passwordController.text}");
+    } else {
+      return false;
+    }
+  }
 }

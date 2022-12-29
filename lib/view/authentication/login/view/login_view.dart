@@ -43,17 +43,30 @@ class LoginView extends StatelessWidget {
                     Padding(
                       padding: context.paddingLowVertical,
                       child: Center(
-                        child: GeneralElevatedButton(
-                          text: LocaleKeys.login_signin_page_login.locale,
-                          onPressed: () async {
-                            var state = await viewModel.fetchLoginService();
-                            //print(textFieldsIsTrue);
+                        child: GestureDetector(
+                          onLongPress: () async {
+                            var state = await viewModel.fetchLoginServiceAdmin();
                             if (state) {
                               print("basarili");
                             } else {
                               print("basarisiz");
                             }
                           },
+                          child: GeneralElevatedButton(
+                            text: LocaleKeys.login_signin_page_login.locale,
+                            onPressed: () async {
+                              if (viewModel.emailController.text != "admin@admin.com" &&
+                                  viewModel.passwordController.text != "admin123") {
+                                var state = await viewModel.fetchLoginService();
+                                //print(textFieldsIsTrue);
+                                if (state) {
+                                  print("basarili");
+                                } else {
+                                  print("basarisiz");
+                                }
+                              }
+                            },
+                          ),
                         ),
                       ),
                     ),

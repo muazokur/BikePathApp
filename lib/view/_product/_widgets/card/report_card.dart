@@ -1,4 +1,3 @@
-import 'package:bike_path_app/view/_product/_widgets/button/comment_button.dart';
 import 'package:bike_path_app/view/_product/_widgets/button/like_button.dart';
 import 'package:flutter/material.dart';
 import 'package:bike_path_app/core/extensions/context_extension.dart';

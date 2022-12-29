@@ -10,6 +10,8 @@ import 'package:flutter/material.dart';
 
 import '../../../view/authentication/login/view/login_view.dart';
 import '../../../view/authentication/onboard/view/on_board_view.dart';
+import '../../../view/employee/view/employee_report_state_view.dart';
+import '../../../view/employee/view/employee_view.dart';
 import '../../../view/google_map/view/google_map_view.dart';
 import '../../../view/user/create_report/view/accept_report_view.dart';
 
@@ -42,8 +44,12 @@ class NavigationRoute {
         return normalNavigate(ReportStateView());
       case NavigationConstants.googleMapView:
         return normalNavigate(GoogleMapView());
+      case NavigationConstants.employeeView:
+        return normalNavigate(EmployeeView());
+      case NavigationConstants.employeeStateView:
+        return normalNavigate(EmployeeReportStateView());
+
       // default:
-      //   print("burda");
       //   return normalNavigate(const NotFoundNavigation());
     }
     return null;

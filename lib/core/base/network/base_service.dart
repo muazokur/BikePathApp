@@ -132,6 +132,7 @@ class BaseService {
 
   Future<bool> addComment(String url, String key, dynamic value, String userName,
       String userSurName, String userPhoto) async {
+    print(value);
     try {
       var jsonModel = CommentId(
               id: key,
