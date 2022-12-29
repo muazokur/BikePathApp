@@ -11,7 +11,6 @@ class ProfileService {
     UserModelCache.userName = userModel.name;
     UserModelCache.surName = userModel.surname;
     UserModelCache.photoUrl = userModel.photoUrl;
-
     return userModel;
   }
 

@@ -95,7 +95,7 @@ class ProfileView extends StatelessWidget {
                 Column(
                   children: [
                     Text(
-                      viewModel.reportText,
+                      "Toplam Bildiri",
                       style: TextStyle(
                         color: Colors.grey[700],
                         fontFamily: 'Nunito',
@@ -123,7 +123,7 @@ class ProfileView extends StatelessWidget {
                 Column(
                   children: [
                     Text(
-                      viewModel.pointText,
+                      "Puan",
                       style: TextStyle(
                         color: Colors.grey[700],
                         fontFamily: 'Nunito',
