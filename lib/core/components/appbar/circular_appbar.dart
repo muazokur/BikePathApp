@@ -7,12 +7,21 @@ class CircularAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CircularAppBar({
     Key? key,
     this.title = const Text("Bike Path App"),
+    this.onTap,
   }) : super(key: key);
   final Widget? title;
+  final Function? onTap;
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: Center(child: title),
+      title: InkWell(
+        child: Center(child: title),
+        onTap: () {
+          if (onTap != null) {
+            onTap!();
+          }
+        },
+      ),
       elevation: 0,
       automaticallyImplyLeading: false,
       flexibleSpace: Container(

@@ -30,7 +30,9 @@ class _EmployeeViewState extends State<EmployeeView> {
       },
       onPageBuilder: (context, viewModel) {
         return Scaffold(
-          appBar: CircularAppBar(),
+          appBar: CircularAppBar(onTap: () {
+            NavigationService.instance.navigedToPageClear(path: NavigationConstants.employeeView);
+          }),
           body: Padding(
             padding: context.paddingLow,
             child: Observer(builder: (_) {

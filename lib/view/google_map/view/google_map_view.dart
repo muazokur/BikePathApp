@@ -5,6 +5,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import 'package:bike_path_app/core/base/view/base_view.dart';
 
+import '../../_product/toast_message.dart';
 import '../view_model.dart/google_map_view_model.dart';
 
 class GoogleMapView extends StatelessWidget {
@@ -53,6 +54,8 @@ class GoogleMapView extends StatelessWidget {
                 print("LNg: ${viewModel.lng}");
 
                 GoogleModel.instance.addCurrentLocation(viewModel.lat, viewModel.lng);
+                ToastMessage.toast("Konum alındı");
+
                 Navigator.pop(context);
               },
               label: Text("Konum Al"),

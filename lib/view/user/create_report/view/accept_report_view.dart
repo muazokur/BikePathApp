@@ -10,6 +10,7 @@ import '../../../../core/base/view/base_view.dart';
 import '../../../../core/constants/navigation/navigation_constant.dart';
 import '../../../../core/extensions/context_extension.dart';
 import '../../../_product/_widgets/button/general_elevated_button.dart';
+import '../../../_product/toast_message.dart';
 import '../../../google_map/view/google_map_view.dart';
 import '../view_model/create_report_view_model.dart';
 
@@ -96,6 +97,7 @@ GeneralElevatedButton acceptButton(CreateReportViewModel viewModel) => GeneralEl
     onPressed: () async {
       var result = await viewModel.acceptReport();
       if (result) {
+        ToastMessage.toast("Bildiri Oluşturuldu");
         NavigationService.instance.navigedToPageClear(path: NavigationConstants.userMainPage);
       }
     },

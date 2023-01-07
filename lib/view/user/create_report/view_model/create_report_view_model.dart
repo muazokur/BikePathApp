@@ -9,6 +9,8 @@ import 'package:bike_path_app/view/user/create_report/service/create_report_serv
 import 'package:flutter/cupertino.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:mobx/mobx.dart';
+
+import '../../../_product/toast_message.dart';
 part 'create_report_view_model.g.dart';
 
 // ignore: library_private_types_in_public_api
@@ -66,6 +68,8 @@ abstract class _CreateReportViewModelBase with Store, BaseViewModel, CreateRepor
   @action
   Future<void> getImageUrl(ImageSource source) async {
     imageUrl = await imagePicker.pickImage(source: source);
+    ToastMessage.toast("Fotoğraf alındı");
+
     if (imageUrl != null) {
       imageIsTrue = true;
     }

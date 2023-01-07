@@ -2,9 +2,11 @@ import 'package:bike_path_app/core/base/view/base_view.dart';
 import 'package:bike_path_app/core/extensions/context_extension.dart';
 import 'package:bike_path_app/core/extensions/string_extension.dart';
 import 'package:bike_path_app/view/_product/_widgets/button/general_elevated_button.dart';
+import 'package:bike_path_app/view/_product/toast_message.dart';
 import 'package:bike_path_app/view/authentication/sign_in/view_model/sign_in_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import '../../../../core/components/text_field/icon_text_form_field.dart';
 import '../../../../core/init/lang/locale_keys.g.dart';
 import '../../../_product/_widgets/text_input/email_text_form_field.dart';
@@ -59,13 +61,14 @@ class _SignInViewState extends State<SignInView> {
                             //print(textFieldsIsTrue);
                             switch (message) {
                               case LoginState.Successful:
-                                print("kayit basarili");
+                                Fluttertoast.showToast(msg: "Kayıt başarılı");
                                 break;
                               case LoginState.FormStateError:
-                                print("Lüften alanları kontrol ediniz");
+                                ToastMessage.toast("Lüften alanları kontrol ediniz");
                                 break;
                               case LoginState.ServiceStateError:
-                                print("e mail ve veya sifre gecersiz");
+                                ToastMessage.toast("E-mail veya şifre geçersiz");
+
                                 break;
                             }
                           },
