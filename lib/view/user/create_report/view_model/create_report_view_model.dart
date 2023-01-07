@@ -67,7 +67,6 @@ abstract class _CreateReportViewModelBase with Store, BaseViewModel, CreateRepor
   Future<void> getImageUrl(ImageSource source) async {
     imageUrl = await imagePicker.pickImage(source: source);
     if (imageUrl != null) {
-      print(imageUrl!.path);
       imageIsTrue = true;
     }
   }
@@ -78,7 +77,6 @@ abstract class _CreateReportViewModelBase with Store, BaseViewModel, CreateRepor
   bool createReport() {
     if (formState.currentState!.validate() && imageUrl != null) {
       title = titleController.text;
-      print(title);
       description = descriptionController.text;
       NavigationService.instance.navigedToPage(path: NavigationConstants.acceptReportPage);
       return true;
@@ -93,7 +91,8 @@ abstract class _CreateReportViewModelBase with Store, BaseViewModel, CreateRepor
       var img = imageUrl!.path.toString();
       var photoUrl = await FireStorage.instance.uploadMedia(File(img), reportPhotos);
       var result =
-          await addReport(photoUrl, title!, description!, location, date, "Selcuklu/Konya");
+          await addReport(photoUrl, title!, description!, location, date, "Mountain/California");
+
       return result;
     } catch (e) {
       return false;

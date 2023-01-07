@@ -52,10 +52,8 @@ abstract class _ProfileViewModelBase with Store, BaseViewModel, ProfileService {
     imageUrl = await imagePicker.pickImage(source: source);
 
     if (imageUrl != null) {
-      print(imageUrl!.path);
       imageIsTrue = true;
     }
-    print(imageIsTrue);
 
     await changeProfileImage();
   }
@@ -67,7 +65,6 @@ abstract class _ProfileViewModelBase with Store, BaseViewModel, ProfileService {
   Future<void> getUser() async {
     userModel = await getProfile();
     isLoadingChange();
-    print(userModel!.surname);
   }
 
   @action

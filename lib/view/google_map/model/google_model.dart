@@ -7,7 +7,6 @@ class GoogleModel {
   List<double> _currentLocation = [];
 
   addCurrentLocation(double latitude, double longitude) {
-    print("----------<<$latitude");
     _currentLocation.clear();
     _currentLocation.add(latitude);
     _currentLocation.add(longitude);

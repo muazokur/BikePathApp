@@ -52,4 +52,5 @@ class UserModelCache {
   static String userName = "admin";
   static String surName = "";
   static String photoUrl = "";
+  static int sumNotification = 0;
 }

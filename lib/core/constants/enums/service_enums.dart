@@ -1,7 +1,7 @@
 import '../service/service_constants.dart';
 import 'package:bike_path_app/core/extensions/string_extension.dart';
 
-enum Service { Users, CurrentUser, Reports, ReportsComments, CurrentUserId }
+enum Service { Users, CurrentUser, Reports, ReportsComments, CurrentUserId, User }
 
 extension ServiceExtension on Service {
   String getParam(String param) {
@@ -10,9 +10,7 @@ extension ServiceExtension on Service {
         return "${ServiceConstants.reports}/$param".json;
       case Service.ReportsComments:
         return "${ServiceConstants.reports}/$param/${ServiceConstants.comments}".json;
-      case Service.Users:
-        return "${ServiceConstants.currentUser}/$param".json;
-      case Service.CurrentUser:
+      case Service.User:
         return "${ServiceConstants.users}/$param".json;
 
       default:

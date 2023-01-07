@@ -23,17 +23,14 @@ class _EmployeeReportStateViewState extends State<EmployeeReportStateView> {
   @override
   void initState() {
     super.initState();
-    print("INIT STATE");
   }
 
   @override
   Widget build(BuildContext context) {
-    print("SETSTATE");
     return BaseView(
       viewModel: ReportViewModel(),
       onModelReady: (ReportViewModel viewModel) {
         viewModel.init();
-        print("SETTTT");
       },
       onPageBuilder: (context, ReportViewModel viewModel) {
         return Scaffold(
@@ -149,16 +146,20 @@ Widget interactionRow(BuildContext context, ReportViewModel viewModel) {
         padding: context.paddingLow,
         child: InkWell(
           onTap: () {
-            print("hop");
             if (viewModel.reportList![IndexController.onTapIndex].state == false) {
               viewModel.changeReportState(
                   viewModel.reportList![IndexController.onTapIndex].key, true);
-            } else {
-              viewModel.changeReportState(
-                  viewModel.reportList![IndexController.onTapIndex].key, false);
+              viewModel.changeReportPoint(
+                  viewModel.reportList![IndexController.onTapIndex].id.toString());
+              viewModel.init();
+              viewModel.isLoadingChange();
             }
-            viewModel.init();
-            viewModel.isLoadingChange();
+            // else {
+            //   viewModel.changeReportState(
+            //       viewModel.reportList![IndexController.onTapIndex].key, false);
+            // }
+            // viewModel.init();
+            // viewModel.isLoadingChange();
           },
           child: viewModel.reportList![IndexController.onTapIndex].state == false
               ? Text("Düzeltdi : Hayir")

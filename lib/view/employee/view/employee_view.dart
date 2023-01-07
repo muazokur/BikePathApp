@@ -46,7 +46,6 @@ class _EmployeeViewState extends State<EmployeeView> {
                             itemBuilder: (context, index) {
                               //int reverseIndex = (viewModel.reportList!.length - 1) - index;
                               int reverseIndex = index;
-                              print(viewModel.reportList!.length);
                               return ReportCard(
                                 title: viewModel.reportList![reverseIndex].title,
                                 subtitle: viewModel.reportList![reverseIndex].description,

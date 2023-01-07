@@ -14,7 +14,6 @@ class FirebaseEmailAuth extends BaseAuthentication {
         password: password,
       );
       if (credential.user != null) {
-        print(credential.user!.uid);
         return credential.user!;
       }
       return null;

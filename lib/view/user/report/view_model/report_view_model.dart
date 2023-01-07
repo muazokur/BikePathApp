@@ -44,13 +44,9 @@ abstract class _ReportViewModelBase with Store, BaseViewModel, ReportService {
   Future getReport() async {
     reportList = await getReports();
     if (reportList != null) {
-      for (int i = 0; i < reportList!.length; i++) {
-        print(reportList![i].title);
-      }
+      for (int i = 0; i < reportList!.length; i++) {}
       getReportComments(reportList![IndexController.onTapIndex].key.toString());
-      print(isLoading);
       isLoadingChange();
-      print(isLoading);
     }
   }
 
@@ -66,7 +62,6 @@ abstract class _ReportViewModelBase with Store, BaseViewModel, ReportService {
 
   @action
   Future getReportComments(String reportId) async {
-    print(reportId);
     commentList = await getComment(reportId);
   }
 
@@ -77,7 +72,11 @@ abstract class _ReportViewModelBase with Store, BaseViewModel, ReportService {
   }
 
   changeReportState(String? key, dynamic value) {
-    updateReportComment(key!, value);
+    updateReportState(key!, value);
+  }
+
+  changeReportPoint(String userId) {
+    updateNotification(userId);
   }
 
   bool addReportComment(String reportId, dynamic value) {

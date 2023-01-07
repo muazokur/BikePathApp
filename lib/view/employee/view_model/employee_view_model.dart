@@ -36,6 +36,5 @@ abstract class _EmployeeViewModelBase with Store, BaseViewModel, EmployeeService
   getReport() async {
     reportList = await getReports();
     isLoadingChange();
-    print(reportList);
   }
 }

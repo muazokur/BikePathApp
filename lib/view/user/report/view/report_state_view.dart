@@ -23,17 +23,14 @@ class _ReportStateViewState extends State<ReportStateView> {
   @override
   void initState() {
     super.initState();
-    print("INIT STATE");
   }
 
   @override
   Widget build(BuildContext context) {
-    print("SETSTATE");
     return BaseView(
       viewModel: ReportViewModel(),
       onModelReady: (ReportViewModel viewModel) {
         viewModel.init();
-        print("SETTTT");
       },
       onPageBuilder: (context, ReportViewModel viewModel) {
         return Scaffold(

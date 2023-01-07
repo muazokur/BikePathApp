@@ -56,7 +56,6 @@ class BaseService {
       Map<String, Map<String, dynamic>> data = {
         id: jsonModel,
       };
-      print(jsonModel);
       await Dio().patch(
         url,
         data: data,
@@ -100,7 +99,6 @@ class BaseService {
       Map<String, Map<String, dynamic>> data = {
         key: jsonModel,
       };
-      print(data);
       await Dio().patch(
         url,
         data: data,
@@ -132,7 +130,6 @@ class BaseService {
 
   Future<bool> addComment(String url, String key, dynamic value, String userName,
       String userSurName, String userPhoto) async {
-    print(value);
     try {
       var jsonModel = CommentId(
               id: key,
@@ -144,7 +141,6 @@ class BaseService {
       Map<String, dynamic> data = {
         key: jsonModel,
       };
-      print(data);
 
       await Dio().patch(
         url,
