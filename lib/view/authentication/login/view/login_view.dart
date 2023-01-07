@@ -8,6 +8,7 @@ import '../../../../core/extensions/string_extension.dart';
 import '../../../../core/init/lang/locale_keys.g.dart';
 import '../../../_product/_widgets/button/general_elevated_button.dart';
 import '../../../_product/_widgets/text_input/email_text_form_field.dart';
+import '../../../_product/toast_message.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({Key? key}) : super(key: key);
@@ -49,7 +50,7 @@ class LoginView extends StatelessWidget {
                             if (state) {
                               print("basarili");
                             } else {
-                              print("basarisiz");
+                              ToastMessage.toast("E-posta veya parola geçersiz");
                             }
                           },
                           child: GeneralElevatedButton(
@@ -62,7 +63,7 @@ class LoginView extends StatelessWidget {
                                 if (state) {
                                   print("basarili");
                                 } else {
-                                  print("basarisiz");
+                                  ToastMessage.toast("E-posta veya parola geçersiz");
                                 }
                               }
                             },

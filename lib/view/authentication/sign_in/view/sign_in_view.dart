@@ -61,7 +61,8 @@ class _SignInViewState extends State<SignInView> {
                             //print(textFieldsIsTrue);
                             switch (message) {
                               case LoginState.Successful:
-                                Fluttertoast.showToast(msg: "Kayıt başarılı");
+                                ToastMessage.toast("Kayıt başarılı");
+
                                 break;
                               case LoginState.FormStateError:
                                 ToastMessage.toast("Lüften alanları kontrol ediniz");
