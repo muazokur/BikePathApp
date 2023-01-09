@@ -6,7 +6,6 @@ import 'package:bike_path_app/view/_product/toast_message.dart';
 import 'package:bike_path_app/view/authentication/sign_in/view_model/sign_in_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import '../../../../core/components/text_field/icon_text_form_field.dart';
 import '../../../../core/init/lang/locale_keys.g.dart';
 import '../../../_product/_widgets/text_input/email_text_form_field.dart';
@@ -35,7 +34,7 @@ class _SignInViewState extends State<SignInView> {
           key: viewModel.scaffoldState,
           body: Form(
             key: viewModel.formState,
-            autovalidateMode: AutovalidateMode.always,
+            autovalidateMode: AutovalidateMode.disabled,
             child: SingleChildScrollView(
               child: Padding(
                 padding: context.paddingMedium,

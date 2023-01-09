@@ -26,7 +26,7 @@ class LoginView extends StatelessWidget {
           key: viewModel.scaffoldState,
           body: Form(
             key: viewModel.formState,
-            autovalidateMode: AutovalidateMode.always,
+            autovalidateMode: AutovalidateMode.disabled,
             child: Padding(
               padding: context.paddingMediumVertical,
               child: SingleChildScrollView(

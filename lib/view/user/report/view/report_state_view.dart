@@ -105,7 +105,7 @@ Widget reportContainer(BuildContext context, ReportViewModel viewModel) {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               titleText(viewModel, context),
-              descriptionText(viewModel, context),
+              Expanded(child: descriptionText(viewModel, context)),
               SizedBox(
                 height: context.height * 0.005,
               ),
