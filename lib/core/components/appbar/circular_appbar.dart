@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 
 import '../../extensions/context_extension.dart';
@@ -20,6 +22,13 @@ class CircularAppBar extends StatelessWidget implements PreferredSizeWidget {
           if (onTap != null) {
             onTap!();
           }
+        },
+      ),
+      leading: IconButton(
+        iconSize: 16,
+        icon: const Icon(Icons.exit_to_app),
+        onPressed: () {
+          exit(0);
         },
       ),
       elevation: 0,

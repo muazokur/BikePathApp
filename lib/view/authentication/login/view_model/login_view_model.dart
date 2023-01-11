@@ -51,7 +51,7 @@ abstract class _LoginViewModelBase with Store, BaseViewModel, LoginService {
     if (formState.currentState!.validate()) {
       var state = await logIn(emailController.text, passwordController.text);
       if (state) {
-        NavigationService.instance.navigedToPage(path: NavigationConstants.userMainPage);
+        NavigationService.instance.navigedToPageClear(path: NavigationConstants.userMainPage);
         return true;
       } else {
         return false;
