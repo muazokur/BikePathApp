@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "198753739212",
-    "project_id": "mmo-bike-path",
-    "storage_bucket": "mmo-bike-path.appspot.com"
+    "project_number": "353371149944",
+    "project_id": "bike-path-app-393f8",
+    "storage_bucket": "bike-path-app-393f8.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:198753739212:android:5760c503a3e692e1b0bd69",
+        "mobilesdk_app_id": "1:353371149944:android:e41e3a7e3b87ddb3573f8d",
         "android_client_info": {
-          "package_name": "com.example.bike_path_app_mmo"
+          "package_name": "com.example.bike_path_app_mmo1"
         }
       },
       "oauth_client": [
         {
-          "client_id": "198753739212-kpr6j6doeu9f19kss0gnk7p2enf5jhba.apps.googleusercontent.com",
+          "client_id": "353371149944-bspqv19obkpaf8l5npr7cqumv3q2vias.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAwSI2hDM3ASGCflNo4a1hD2x0lGEwswnc"
+          "current_key": "AIzaSyDTxTl1RteE8k6zDRwrKW1i7xQlU0YZBVs"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "198753739212-kpr6j6doeu9f19kss0gnk7p2enf5jhba.apps.googleusercontent.com",
+              "client_id": "353371149944-bspqv19obkpaf8l5npr7cqumv3q2vias.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
@@ -36,35 +36,35 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:198753739212:android:7b094187e5aa50d0b0bd69",
+        "mobilesdk_app_id": "1:353371149944:android:efb7cc01985f546c573f8d",
         "android_client_info": {
-          "package_name": "com.example.bike_path_app_mmo1"
+          "package_name": "com.example.bike_path_app_mmo2"
         }
       },
       "oauth_client": [
         {
-          "client_id": "198753739212-k6pf1l5nods5564b5n8lponienooecli.apps.googleusercontent.com",
+          "client_id": "353371149944-melsms9n2vse10hobmf91o02hh1jkt2i.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.bike_path_app_mmo1",
+            "package_name": "com.example.bike_path_app_mmo2",
             "certificate_hash": "346551311b2483824d290b54c7ed1940dc6b6a7a"
           }
         },
         {
-          "client_id": "198753739212-kpr6j6doeu9f19kss0gnk7p2enf5jhba.apps.googleusercontent.com",
+          "client_id": "353371149944-bspqv19obkpaf8l5npr7cqumv3q2vias.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAwSI2hDM3ASGCflNo4a1hD2x0lGEwswnc"
+          "current_key": "AIzaSyDTxTl1RteE8k6zDRwrKW1i7xQlU0YZBVs"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "198753739212-kpr6j6doeu9f19kss0gnk7p2enf5jhba.apps.googleusercontent.com",
+              "client_id": "353371149944-bspqv19obkpaf8l5npr7cqumv3q2vias.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

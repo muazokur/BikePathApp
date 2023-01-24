@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.bike_path_app_mmo1">
+    package="com.example.bike_path_app_mmo2">
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
    <application
@@ -34,6 +34,6 @@
             android:name="flutterEmbedding"
             android:value="2" />
         <meta-data android:name="com.google.android.geo.API_KEY"
-              android:value="AIzaSyBKWSKuBssppP7uGbGTcEutT68fHb1VQsY"/>
+              android:value="AIzaSyDsbwQ1NtDMQ6iZ6Otf2HH_XQmX9RASvnk"/>
     </application>
 </manifest>
